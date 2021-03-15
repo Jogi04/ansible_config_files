@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update arch systems
+    pacman:
+      update_cache: true
+      upgrade: true
+    when: ansible_distribution == 'Archlinux'
