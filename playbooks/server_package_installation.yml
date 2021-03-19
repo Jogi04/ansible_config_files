@@ -1,0 +1,23 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: installing specified packages
+    apt:
+      name:
+        - openssh-server
+        - rsync
+        - bash-completion
+        - curl
+        - wget
+        - vim
+        - nano
+        - git
+        - htop
+        - python3
+        - python3-pip
+        - cron
+      state: latest
+    when: ansible_os_family == 'Debian'

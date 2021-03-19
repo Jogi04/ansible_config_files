@@ -1,0 +1,24 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: disable root login
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^(.*)PermitRootLogin(.*)$'
+      line: 'PermitRootLogin no'
+      firstmatch: true
+
+  - name: disable password authentication
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^(.*)PasswordAuthentication(.*)$'
+      line: 'PasswordAuthentication no'
+      firstmatch: true
+
+  - name: restart ssh service to apply changes
+    systemd:
+      name: sshd
+      state: restarted
