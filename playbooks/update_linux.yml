@@ -16,7 +16,7 @@
       upgrade: true
     when: ansible_os_family == 'Debian'
 
-  - name: udpate RedHat-based systems, equivalent to 'dnf update; dnf upgrade'
+  - name: udpate RedHat-based systems, equivalent to 'yum update; yum upgrade'
     yum:
       update_cache: true
       name: '*'
