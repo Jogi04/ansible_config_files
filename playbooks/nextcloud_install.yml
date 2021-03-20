@@ -12,7 +12,7 @@
   - name: secure mysql (mysql_secure_installtion)
     command: mysql_secure_installtion
 
-  - name: create nextcloud database (mysql; CREAT DATABASE nextcloud)
+  - name: create nextcloud database (mysql; CREATE DATABASE nextcloud)
     mysql_db:
       name: nextcloud
       state: present
