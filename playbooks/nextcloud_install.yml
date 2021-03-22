@@ -4,21 +4,56 @@
   become: true
   tasks:
 
-  - name: install mysql (apt/yum/pacman install mysql-server)
+  - name: install mysql (apt/yum/pacman install mysql-server, apache2)
     package:
-      name: mysql-server
+      name:
+        - mysql-server
+        - apache2
       state: latest
 
-  - name: secure mysql (mysql_secure_installtion)
-    command: mysql_secure_installtion
+  - name: adds python mysql support
+    package:
+      name: python-mysqldb
+      state: latest
+      
+  - name: set root password
+    mysql_user:
+      name: root
+      password: 'localadmin'
+      host: localhost
 
-  - name: create nextcloud database (mysql; CREATE DATABASE nextcloud)
+  - name: Removes all anonymous user accounts
+    mysql_user:
+      name: ''
+      host_all: yes
+      state: absent
+      
+  - name: set root access to localhost only
+    mysql_user:
+      login_host: localhost
+      login_user: root
+      login_password: ''
+      name: root
+      password: 'localadmin'
+      state: present
+      host: ['127.0.0.1', '::1', 'localhost']
+      
+  - name: remove test databse
+    mysql_user:
+      login_host: localhost
+      login_user: root
+      login_password: 'localadmin'
+      db: test
+      state: absent
+      
+
+  - name: create nextcloud database (mysql; CREAT DATABASE nextcloud)
     mysql_db:
       name: nextcloud
       state: present
 
-  - name: grant privileges to nextcloud database (GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY '<password>')
-    command: mysql -u root -e "GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY '<password>'"
+  - name: grant privileges to nextcloud database (GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY 'password')
+    command: mysql -u root -e "GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY 'password'"
 
   - name: install required php packages (apt/dnf/pacman install <package>)
     package:
@@ -41,26 +76,25 @@
     command: phpenmod bcmath gmp imagick intl
 
   - name: download nextcloud from source and put it into /var/www/ directory (wget nextcloud-<version>.zip)
-    get_url: https://download.nextcloud.com/server/releases/nextcloud-<verson>.zip
+    get_url: https://download.nextcloud.com/server/releases/nextcloud-21.0.0.zip
       dst: /var/www/
 
   - name: unzip nextcloud download (unzip /var/www/nextcloud-<version>.zip -d /var/www/)
     unarchive:
-      src: /var/www/nextcloud-<version>.zip
+      src: /var/www/nextcloud-21.0.0.zip
       dst: /var/www/
 
   - name: rename nextcloud folder (mv /var/www/nextcloud /var/www/<site>)
-    command: mv /var/www/nextcloud /var/www/<site>
+    command: mv /var/www/nextcloud /var/www/nc.jogi.de
 
   - name: disable apache default website (a2dissite 000-default.conf)
     command: a2dissite 000-default.conf
 
   - name: create apache config file for nextcloud test_site
+  
 
   - name: enable newly created config file (a2ensite <site>)
-    command: a2ensite <site>
-
-  - name: configure php
+    command: a2ensite nc.jogi.com
 
   - name: enable required apache mods (a2enmod dir env headers mime rewrite ssl)
     command: a2enmod dir env headers mime rewrite ssl
@@ -69,8 +103,6 @@
     systemd:
       name: apache2
       state: restarted
-
-  - name: enable memory caching
 
   - name: correct permissions of php config file (chmod 660 /var/www/<site>/config/config.php; chown root:www-data /var/www/<site>/config/config.php)
     file:
@@ -82,5 +114,5 @@
   - name: add certboot repo (add-apt-repository ppa:certbot/certbot)
     command: add-apt-repository ppa:certbot/certbot
 
-  - name: create ssl sertificate (certbot --apache -d nc.learnlinux.tv)
+  - name: create ssl sertificate (certbot --apache -d <site>)
     command: certbot --apache -d <site>
