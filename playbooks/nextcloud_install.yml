@@ -4,14 +4,14 @@
   become: true
   tasks:
 
-  - name: install mysql (apt/yum/pacman install mysql-server, apache2)
+  - name: install mysql and apache2 (apt install mysql-server, apache2)
     package:
       name:
         - mysql-server
         - apache2
       state: latest
 
-  - name: adds python mysql support
+  - name: adds python mysql support (apt install python-mysqldb)
     package:
       name: python-mysqldb
       state: latest
@@ -19,7 +19,7 @@
   - name: set root password
     mysql_user:
       name: root
-      password: 'localadmin'
+      password: "{{ mysql_root_password }}"
       host: localhost
 
   - name: Removes all anonymous user accounts
@@ -34,7 +34,7 @@
       login_user: root
       login_password: ''
       name: root
-      password: 'localadmin'
+      password: "{{ mysql_root_password }}"
       state: present
       host: ['127.0.0.1', '::1', 'localhost']
       
@@ -42,7 +42,7 @@
     mysql_user:
       login_host: localhost
       login_user: root
-      login_password: 'localadmin'
+      login_password: "{{ mysql_root_password }}"
       db: test
       state: absent
       
@@ -53,9 +53,9 @@
       state: present
 
   - name: grant privileges to nextcloud database (GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY 'password')
-    command: mysql -u root -e "GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY 'password'"
+    command: mysql -u root -e "GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY '{{ mysql_root_password }}'"
 
-  - name: install required php packages (apt/dnf/pacman install <package>)
+  - name: install required php packages (apt install <package>)
     package:
       - php
       - php-apcu
@@ -85,16 +85,18 @@
       dst: /var/www/
 
   - name: rename nextcloud folder (mv /var/www/nextcloud /var/www/<site>)
-    command: mv /var/www/nextcloud /var/www/nc.jogi.de
+    command: mv /var/www/nextcloud /var/www/nc.test.de
 
   - name: disable apache default website (a2dissite 000-default.conf)
     command: a2dissite 000-default.conf
 
   - name: create apache config file for nextcloud test_site
-  
+    template:
+      src: /template/nc.jogi.de.conf
+      dst: /etc/apache2/sites-available/nc.test.de.conf
 
   - name: enable newly created config file (a2ensite <site>)
-    command: a2ensite nc.jogi.com
+    command: a2ensite nc.test.de
 
   - name: enable required apache mods (a2enmod dir env headers mime rewrite ssl)
     command: a2enmod dir env headers mime rewrite ssl
@@ -106,7 +108,7 @@
 
   - name: correct permissions of php config file (chmod 660 /var/www/<site>/config/config.php; chown root:www-data /var/www/<site>/config/config.php)
     file:
-      path: /var/www/<site>/config/config.php
+      path: /var/www/nc.test.de/config/config.php
       owner: root
       group: www-data
       mode: 0660
