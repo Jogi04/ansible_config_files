@@ -1,0 +1,63 @@
+- name: install zsh
+  package:
+    name: zsh
+    state: latest
+
+- name: create zsh-themes directory
+  file:
+    path: ~/.zsh-themes
+    state: directory
+    mode: '0755'
+
+- name: create gnzh directory inside .zsh-themes
+  file:
+    path: ~/.zsh-themes/gnzh
+    state: directory
+    mode: '0755'
+
+- name: download gnzh theme
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/themes/gnzh.zsh-theme
+    dst: ~/.zsh-themes/gnzh/
+
+- name: source gnzh theme in .zshrc
+  lineinfile:
+    path: ~/.zshrc
+    line: '{{ item }}'
+    state: present
+  with_items:
+    - '# manually installed zsh themes'
+    - 'source ~/.zsh-themes/gnzh/gnzh.zsh-theme'
+
+
+- name: create zsh-plugins directory
+  file:
+    path: ~/.zsh-plugins
+    state: directory
+    mode: '0755'
+
+- name: download zsh autosuggestions plugin
+  git:
+    url: https://github.com/zsh-users/zsh-autosuggestions.git
+    dst: ~/.zsh-plugins/
+
+- name: download zsh completion plugin
+  git:
+    url: https://github.com/zsh-users/zsh-completions.git
+    dst: ~/.zsh-plugins/
+
+- name: download zsh zsh-syntax-highlighting plugin
+  git:
+    url: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dst: ~/.zsh-plugins/
+
+- name: source newly installed plugins in .zshrc
+  lineinfile:
+    path: ~/.zshrc
+    line: '{{ item }}'
+    state: present
+  with_items:
+    - '# manually installed zsh plugins'
+    - 'source ~/.zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
+    - 'source ~/.zsh-plugins/zsh-completions/zsh-completions.plugin.zsh'
+    - 'source ~/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
