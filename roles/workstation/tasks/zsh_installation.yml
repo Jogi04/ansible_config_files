@@ -7,13 +7,11 @@
   file:
     path: /home/jogi/.zsh-themes
     state: directory
-    mode: '0755'
 
 - name: create gnzh directory inside .zsh-themes
   file:
     path: /home/jogi/.zsh-themes/gnzh
     state: directory
-    mode: '0755'
 
 - name: download gnzh theme
   get_url:
@@ -25,27 +23,54 @@
   file:
     path: /home/jogi/.zsh-plugins
     state: directory
-    mode: '0755'
+
+- name: create zsh-autosuggestions directory
+  file:
+    path: /home/jogi/.zsh-plugins/zsh-autosuggestions/
+    state: directory
 
 - name: download zsh autosuggestions plugin
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
-    dest: /home/jogi/.zsh-plugins/
+    dest: /home/jogi/.zsh-plugins/zsh-autosuggestions
+
+- name: create zsh-completion directory
+  file:
+    path: /home/jogi/.zsh-plugins/zsh-completion/
+    state: directory
 
 - name: download zsh completion plugin
   git:
-    repo: https://github.com/zsh-users/zsh-completions.git
-    dest: /home/jogi/.zsh-plugins/
+    repo: https://github.com/zsh-users/zsh-completion.git
+    dest: /home/jogi/.zsh-plugins/zsh-completion
+
+- name: create zsh-syntax-hightlighting directory
+  file:
+    path: /home/jogi/.zsh-plugins/zsh-syntax-hightlighting
+    state: directory
 
 - name: download zsh-syntax-highlighting plugin
   git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-    dest: /home/jogi/.zsh-plugins/
+    dest: /home/jogi/.zsh-plugins/zsh-syntax-highlighting
 
 - name: create .zshrc from template
   template:
     src: /templates/.zshrc
     dest: /home/jogi/.zshrc
+
+- name: change ownership of created files and directories to jogi
+  file:
+    path: '{{ item }}'
+    owner: jogi
+    group: jogi
+    mode: '0755'
+    state: directory
+    recurse: yes
+  with_items:
+    - /home/jogi/.zshrc/
+    - /home/jogi/.zsh-plugins/
+    - /home/jogi/.zsh-themes/
 
 - name: source .zshrc
   command: 'source /home/jogi/.zshrc'
