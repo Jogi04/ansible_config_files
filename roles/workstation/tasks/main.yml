@@ -1,1 +1,1 @@
-- include_tasks: zsh_installtation.yml
+- include_tasks: zsh_installation.yml
