@@ -69,4 +69,6 @@
     mode: '0755'
 
 - name: make zsh shell the default shell
-  command: 'chsh -s /usr/bin/zsh'
+  user:
+    name: jogi
+    shell: /usr/bin/zsh
