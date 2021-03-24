@@ -61,6 +61,3 @@
     - /home/jogi/.zshrc/
     - /home/jogi/.zsh-plugins/
     - /home/jogi/.zsh-themes/
-
-- name: source .zshrc
-  command: 'source /home/jogi/.zshrc'
