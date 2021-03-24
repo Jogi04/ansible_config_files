@@ -34,20 +34,10 @@
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
     dest: /home/jogi/.zsh-plugins/zsh-autosuggestions
 
-- name: create zsh-completion directory
-  file:
-    path: /home/jogi/.zsh-plugins/zsh-completions/
-    state: directory
-
 - name: download zsh completion plugin
   git:
     repo: https://github.com/zsh-users/zsh-completions.git
     dest: /home/jogi/.zsh-plugins/zsh-completions/
-
-- name: create zsh-syntax-hightlighting directory
-  file:
-    path: /home/jogi/.zsh-plugins/zsh-syntax-hightlighting
-    state: directory
 
 - name: download zsh-syntax-highlighting plugin
   git:
