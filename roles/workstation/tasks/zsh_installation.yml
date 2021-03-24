@@ -49,7 +49,7 @@
     src: .zshrc
     dest: /home/jogi/.zshrc
 
-- name: change ownership of created files and directories to jogi
+- name: change ownership of created directories to jogi
   file:
     path: '{{ item }}'
     owner: jogi
@@ -58,6 +58,12 @@
     state: directory
     recurse: yes
   with_items:
-    - /home/jogi/.zshrc/
     - /home/jogi/.zsh-plugins/
     - /home/jogi/.zsh-themes/
+
+- name: change ownership of .zshrc to jogi
+  file:
+    path: /home/jogi/.zshrc
+    owner: jogi
+    group: jogi
+    mode: '0755'
