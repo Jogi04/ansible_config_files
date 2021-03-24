@@ -56,7 +56,7 @@
 
 - name: create .zshrc from template
   template:
-    src: /templates/.zshrc
+    src: .zshrc
     dest: /home/jogi/.zshrc
 
 - name: change ownership of created files and directories to jogi
