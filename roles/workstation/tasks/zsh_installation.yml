@@ -13,9 +13,9 @@
     path: /home/jogi/.zsh-themes/gnzh
     state: directory
 
-- name: download gnzh theme
-  get_url:
-    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/themes/gnzh.zsh-theme
+- name: load gnzh theme from template
+  template:
+    src: gnzh.zsh-theme
     dest: /home/jogi/.zsh-themes/gnzh/
 
 
@@ -67,3 +67,6 @@
     owner: jogi
     group: jogi
     mode: '0755'
+
+- name: make zsh shell the default shell
+  command: 'chsh -s /usr/bin/zsh'
