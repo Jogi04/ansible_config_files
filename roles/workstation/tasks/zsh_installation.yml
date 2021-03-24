@@ -68,7 +68,7 @@
     group: jogi
     mode: '0755'
 
-- name: make zsh shell the default shell
+- name: make zsh the default shell
   user:
     name: jogi
     shell: /usr/bin/zsh
