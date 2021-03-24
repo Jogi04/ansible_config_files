@@ -1,0 +1,9 @@
+- name: update every cloned git repo
+  command: 'cd {{ item }} && git pull'
+  with_items:
+    - /home/jogi/.zsh-plugins/zsh-syntax-highlighting/
+    - /home/jogi/.zsh-plugins/zsh-completions/
+    - /home/jogi/.zsh-plugins/zsh-autosuggestions/
+    - /opt/android-studio/
+    - /opt/spotify/
+    - /opt/downgrade/
