@@ -29,9 +29,10 @@ class AnsibleSetup:
         # get list of IPs from inventory file and copy keys to each defined server
         with open(self.server_ips, 'r') as f:
             for line in f:
-                ip = re.match(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', line)
+                ip = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', line)
                 if ip:
-                    self.copy_public_key_to_server(ip)
+                    # self.copy_public_key_to_server(ip.group())
+                    print(ip.group())
 
     def check_underlying_package_manager(self):
         """
