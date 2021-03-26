@@ -1,120 +1,114 @@
----
+- name: install mysql and apache2 (apt install mysql-server, apache2)
+  package:
+    name:
+      - mysql-server
+      - apache2
+    state: latest
 
-- hosts: all
-  become: true
-  tasks:
+- name: adds python mysql support (apt install python-mysqldb)
+  package:
+    name: python-mysqldb
+    state: latest
 
-  - name: install mysql and apache2 (apt install mysql-server, apache2)
-    package:
-      name:
-        - mysql-server
-        - apache2
-      state: latest
+- name: set root password
+  mysql_user:
+    name: root
+    password: "{{ mysql_root_password }}"
+    host: localhost
 
-  - name: adds python mysql support (apt install python-mysqldb)
-    package:
-      name: python-mysqldb
-      state: latest
-      
-  - name: set root password
-    mysql_user:
-      name: root
-      password: "{{ mysql_root_password }}"
-      host: localhost
+- name: Removes all anonymous user accounts
+  mysql_user:
+    name: ''
+    host_all: yes
+    state: absent
 
-  - name: Removes all anonymous user accounts
-    mysql_user:
-      name: ''
-      host_all: yes
-      state: absent
-      
-  - name: set root access to localhost only
-    mysql_user:
-      login_host: localhost
-      login_user: root
-      login_password: ''
-      name: root
-      password: "{{ mysql_root_password }}"
-      state: present
-      host: ['127.0.0.1', '::1', 'localhost']
-      
-  - name: remove test databse
-    mysql_user:
-      login_host: localhost
-      login_user: root
-      login_password: "{{ mysql_root_password }}"
-      db: test
-      state: absent
-      
+- name: set root access to localhost only
+  mysql_user:
+    login_host: localhost
+    login_user: root
+    login_password: ''
+    name: root
+    password: "{{ mysql_root_password }}"
+    state: present
+    host: ['127.0.0.1', '::1', 'localhost']
 
-  - name: create nextcloud database (mysql; CREAT DATABASE nextcloud)
-    mysql_db:
-      name: nextcloud
-      state: present
+- name: remove test databse
+  mysql_user:
+    login_host: localhost
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    db: test
+    state: absent
 
-  - name: grant privileges to nextcloud database (GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY 'password')
-    command: mysql -u root -e "GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY '{{ mysql_root_password }}'"
 
-  - name: install required php packages (apt install <package>)
-    package:
-      - php
-      - php-apcu
-      - php-bcmath
-      - php-cli
-      - php-common
-      - php-curl
-      - php-gd
-      - php-gmp
-      - php-imagick
-      - php-intl
-      - php-mbstring
-      - php-mysql
-      - php-zip
-      - php-xml
+- name: create nextcloud database (mysql; CREAT DATABASE nextcloud)
+  mysql_db:
+    name: nextcloud
+    state: present
 
-  - name: enable php mods (phpenmod bcmath gmp imagick intl)
-    command: phpenmod bcmath gmp imagick intl
+- name: grant privileges to nextcloud database (GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY 'password')
+  command: mysql -u root -e "GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost IDENTIFIED BY '{{ mysql_root_password }}'"
 
-  - name: download nextcloud from source and put it into /var/www/ directory (wget nextcloud-<version>.zip)
-    get_url: https://download.nextcloud.com/server/releases/nextcloud-21.0.0.zip
-      dst: /var/www/
+- name: install required php packages (apt install <package>)
+  package:
+    - php
+    - php-apcu
+    - php-bcmath
+    - php-cli
+    - php-common
+    - php-curl
+    - php-gd
+    - php-gmp
+    - php-imagick
+    - php-intl
+    - php-mbstring
+    - php-mysql
+    - php-zip
+    - php-xml
 
-  - name: unzip nextcloud download (unzip /var/www/nextcloud-<version>.zip -d /var/www/)
-    unarchive:
-      src: /var/www/nextcloud-21.0.0.zip
-      dst: /var/www/
+- name: enable php mods (phpenmod bcmath gmp imagick intl)
+  command: phpenmod bcmath gmp imagick intl
 
-  - name: rename nextcloud folder (mv /var/www/nextcloud /var/www/<site>)
-    command: mv /var/www/nextcloud /var/www/nc.test.de
+- name: download nextcloud from source and put it into /var/www/ directory (wget nextcloud-<version>.zip)
+  get_url: https://download.nextcloud.com/server/releases/nextcloud-21.0.0.zip
+    dst: /var/www/
 
-  - name: disable apache default website (a2dissite 000-default.conf)
-    command: a2dissite 000-default.conf
+- name: unzip nextcloud download (unzip /var/www/nextcloud-<version>.zip -d /var/www/)
+  unarchive:
+    src: /var/www/nextcloud-21.0.0.zip
+    dst: /var/www/
 
-  - name: create apache config file for nextcloud test_site
-    template:
-      src: /template/nc.test.de.conf
-      dst: /etc/apache2/sites-available/nc.test.de.conf
+- name: rename nextcloud folder (mv /var/www/nextcloud /var/www/<site>)
+  command: mv /var/www/nextcloud /var/www/nc.test.de
 
-  - name: enable newly created config file (a2ensite <site>)
-    command: a2ensite nc.test.de
+- name: disable apache default website (a2dissite 000-default.conf)
+  command: a2dissite 000-default.conf
 
-  - name: enable required apache mods (a2enmod dir env headers mime rewrite ssl)
-    command: a2enmod dir env headers mime rewrite ssl
+- name: create apache config file for nextcloud test_site
+  template:
+    src: /template/nc.test.de.conf
+    dst: /etc/apache2/sites-available/nc.test.de.conf
 
-  - name: restart apache service to apply changes (systemctl restart apache2)
-    systemd:
-      name: apache2
-      state: restarted
+- name: enable newly created config file (a2ensite <site>)
+  command: a2ensite nc.test.de
 
-  - name: correct permissions of php config file (chmod 660 /var/www/<site>/config/config.php; chown root:www-data /var/www/<site>/config/config.php)
-    file:
-      path: /var/www/nc.test.de/config/config.php
-      owner: root
-      group: www-data
-      mode: 0660
+- name: enable required apache mods (a2enmod dir env headers mime rewrite ssl)
+  command: a2enmod dir env headers mime rewrite ssl
 
-  - name: add certboot repo (add-apt-repository ppa:certbot/certbot)
-    command: add-apt-repository ppa:certbot/certbot
+- name: restart apache service to apply changes (systemctl restart apache2)
+  systemd:
+    name: apache2
+    state: restarted
 
-  - name: create ssl sertificate (certbot --apache -d <site>)
-    command: certbot --apache -d <site>
+- name: correct permissions of php config file (chmod 660 /var/www/<site>/config/config.php; chown root:www-data /var/www/<site>/config/config.php)
+  file:
+    path: /var/www/nc.test.de/config/config.php
+    owner: root
+    group: www-data
+    mode: 0660
+
+- name: add certboot repo (add-apt-repository ppa:certbot/certbot)
+  command: add-apt-repository ppa:certbot/certbot
+
+- name: create ssl sertificate (certbot --apache -d <site>)
+  command: certbot --apache -d <site>
