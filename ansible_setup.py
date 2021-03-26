@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/python3
 
 
 import os
@@ -17,21 +17,28 @@ class AnsibleSetup:
     def setup(self):
         """
         main function; if initial_setup == False, only a key will be copied; otherwise it will install ansible and ssh,
-        start and enable ssh, generate ssh keys
+        start and enable ssh, generate ssh keys, install sshpass to automate the initial login and remove sshpass at the
+        end
         """
+        system_package_manager = self.check_underlying_package_manager()
         if self.initial_setup:
-            system_package_manager = self.check_underlying_package_manager()
             self.install_ansible(system_package_manager)
             self.install_openssh_client(system_package_manager)
             self.start_and_enable_sshd()
             self.generate_ssh_keys()
 
-        # get list of IPs from inventory file and copy keys to each defined server
+        # get list of IPs from inventory file and copy defined public key to each defined server
+
+        key_location = str(input("Enter the location of the public ssh key [~/.ssh/<key-name>.pub]: "))
+        password_servers = str(input("Enter the ssh password for the servers you want to copy the key to: "))
+        self.install_sshpass(system_package_manager)
         with open(self.server_ips, 'r') as f:
             for line in f:
                 ip = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', line)
                 if ip:
-                    self.copy_public_key_to_server(ip.group())
+                    self.copy_public_key_to_server(ip.group(), key_location, password_servers)
+
+        self.uninstall_sshpass(system_package_manager)
 
     def check_underlying_package_manager(self):
         """
@@ -90,21 +97,47 @@ class AnsibleSetup:
         """
         os.system('sudo systemctl enable --now sshd')
 
+    def install_sshpass(self, package_manager):
+        """
+        install sshpass from the official repositories
+        :param package_manager: which underlying package manager to use
+        """
+        if package_manager == 'apt':
+            os.system('sudo -S apt install sshpass')
+        elif package_manager == 'pacman':
+            os.system('sudo -S pacman -S sshpass')
+        elif package_manager == 'yum':
+            os.system('sudo -S yum install sshpass')
+
+    def uninstall_sshpass(self, package_manager):
+        """
+        unistall sshpass
+        :param package_manager: which underlying package manager to use
+        """
+        if package_manager == 'apt':
+            os.system('sudo -S apt remove sshpass')
+            os.system('sudo -S apt autoremove')
+        elif package_manager == 'pacman':
+            os.system('sudo -S pacman -Rns sshpass')
+        elif package_manager == 'yum':
+            os.system('sudo -S yum autoremove sshpass')
+
     def generate_ssh_keys(self):
         """
         generate ssh keys which ansible requires
         """
         os.system('ssh-keygen')
 
-    def copy_public_key_to_server(self, server_ip):
+    def copy_public_key_to_server(self, server_ip, key_loc, server_password):
         """
         copy an existing ssh public key to a server
         :param server_ip: ip of the server the keys are supposed to be copied onto
+        :param key_loc: location of the public ssh key
+        :param server_password: password of the server(s) you want to copy the public key to
         """
-        key_location = str(input('Enter the location of the ssh key [~/.ssh/<key_name>.pub]: '))
-        os.system(f'ssh-copy-id -i {key_location} {self.username}@{server_ip}')
+        os.system(f'sshpass - p "{server_password}" ssh-copy-id -i {key_loc} {self.username}@{server_ip}')
 
 
 if __name__ == '__main__':
-    setup = AnsibleSetup('<username>', 'inventory', False)
+    setup = AnsibleSetup('jogi', 'inventory', False)
     setup.setup()
