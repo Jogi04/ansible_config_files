@@ -141,3 +141,4 @@ class AnsibleSetup:
 if __name__ == '__main__':
     setup = AnsibleSetup('jogi', 'inventory', False)
     setup.setup()
+
