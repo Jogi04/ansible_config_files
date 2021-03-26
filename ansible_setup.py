@@ -72,11 +72,11 @@ class AnsibleSetup:
         :param package_manager: which underlying package manager to use
         """
         if package_manager == 'apt':
-            os.system('sudo -S apt install ansible')
+            os.system('sudo -S apt install ansible -y')
         elif package_manager == 'pacman':
-            os.system('sudo -S pacman -S ansible')
+            os.system('sudo -S pacman -S ansible --noconfirm --needed')
         elif package_manager == 'yum':
-            os.system('sudo -S yum install ansible')
+            os.system('sudo -S yum install ansible -y')
 
     def install_openssh_client(self, package_manager):
         """
@@ -84,11 +84,11 @@ class AnsibleSetup:
         :param package_manager: which underlying package manager to use
         """
         if package_manager == 'apt':
-            os.system('sudo -S apt install openssh-client')
+            os.system('sudo -S apt install openssh-client -y')
         elif package_manager == 'pacman':
-            os.system('sudo -S pacman -S openssh')
+            os.system('sudo -S pacman -S openssh --noconfirm --needed')
         elif package_manager == 'yum':
-            os.system('sudo -S yum install openssh-clients')
+            os.system('sudo -S yum install openssh-clients -y')
 
     def install_sshpass(self, package_manager):
         """
