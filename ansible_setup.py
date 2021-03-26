@@ -27,11 +27,11 @@ class AnsibleSetup:
             self.start_and_enable_sshd()
             self.generate_ssh_keys()
 
-        # get list of IPs from inventory file and copy defined public key to each defined server
-
         key_location = str(input("Enter the location of the public ssh key [~/.ssh/<key-name>.pub]: "))
         password_servers = str(input("Enter the ssh password for the servers you want to copy the key to: "))
         self.install_sshpass(system_package_manager)
+
+        # get list of IPs from inventory file and copy defined public key to each defined server
         with open(self.server_ips, 'r') as f:
             for line in f:
                 ip = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', line)
