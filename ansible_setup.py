@@ -31,8 +31,7 @@ class AnsibleSetup:
             for line in f:
                 ip = re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', line)
                 if ip:
-                    # self.copy_public_key_to_server(ip.group())
-                    print(ip.group())
+                    self.copy_public_key_to_server(ip.group())
 
     def check_underlying_package_manager(self):
         """
