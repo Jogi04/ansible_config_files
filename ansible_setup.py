@@ -123,15 +123,14 @@ class AnsibleSetup:
 
     def copy_public_key_to_server(self, server_ip, key_loc, server_password):
         """
-        copy an existing ssh public key to a server
+        first connect to server to add signature and then copy an existing ssh public key to a server
         :param server_ip: ip of the server the keys are supposed to be copied onto
         :param key_loc: location of the public ssh key
         :param server_password: password of the server(s) you want to copy the public key to
         """
-        os.system(f'sshpass -p "{server_password}" ssh-copy-id -i {key_loc} {self.username}@{server_ip}')
+        os.system(f'sshpass -p "{server_password}" ssh-copy-id -i {key_loc} -o "StrictHostKeyChecking no" {self.username}@{server_ip}')
 
 
 if __name__ == '__main__':
     setup = AnsibleSetup('jogi', 'inventory', False)
     setup.setup()
-
