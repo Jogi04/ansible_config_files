@@ -2,5 +2,12 @@
 
 - hosts: all
   become: true
+  tags: base
   roles:
     - base
+
+- hosts: workstation
+  become: true
+  tags: workstation
+  roles:
+    - workstation
