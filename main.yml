@@ -6,6 +6,12 @@
   roles:
     - base
 
+- hosts: server
+  become: true
+  tags: server
+  roles:
+    - server
+
 - hosts: workstation
   become: true
   tags: workstation
