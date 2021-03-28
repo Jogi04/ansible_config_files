@@ -1,7 +1,6 @@
-- name: update all locally cloned repos using git pull
-  command: "cd {{ item }} && git pull"
+- name: update all locally clone repos
+  command: chdir={{ item }} git pull
   with_items:
-    - /home/jogi/.zsh-themes/gnzh/
     - /home/jogi/.zsh-plugins/zsh-autosuggestions/
     - /home/jogi/.zsh-plugins/zsh-completions/
     - /home/jogi/.zsh-plugins/zsh-syntax-highlighting/
