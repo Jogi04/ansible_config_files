@@ -15,7 +15,7 @@
 
 - name: load gnzh theme from template
   template:
-    src: gnzh.zsh-theme
+    src: zsh/gnzh.zsh-theme
     dest: /home/jogi/.zsh-themes/gnzh/
 
 
@@ -46,7 +46,7 @@
 
 - name: create .zshrc from template
   template:
-    src: .zshrc
+    src: zsh/.zshrc
     dest: /home/jogi/.zshrc
 
 - name: change ownership of created directories to jogi
