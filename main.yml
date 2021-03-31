@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: server
   become: true
   tags: base
   roles:

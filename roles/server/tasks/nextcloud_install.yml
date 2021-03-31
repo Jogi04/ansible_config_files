@@ -16,7 +16,7 @@
     password: "{{ mysql_root_password }}"
     host: localhost
 
-- name: Removes all anonymous user accounts
+- name: Removes server anonymous user accounts
   mysql_user:
     name: ''
     host_all: yes

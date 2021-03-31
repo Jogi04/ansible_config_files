@@ -4,12 +4,12 @@
     name: ufw
     state: latest
 
-- name: deny all incoming traffic (ufw default deny incoming)
+- name: deny server incoming traffic (ufw default deny incoming)
   ufw:
     default: deny
     direction: incoming
 
-- name: allow all outgoing traffic (ufw default allow outgoing)
+- name: allow server outgoing traffic (ufw default allow outgoing)
   ufw:
    default: allow
    direction: outgoing

@@ -1,4 +1,4 @@
-- name: update all locally clone repos
+- name: update server locally clone repos
   command: chdir={{ item }} git pull
   with_items:
     - /home/jogi/.zsh-plugins/zsh-autosuggestions/
