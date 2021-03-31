@@ -1,0 +1,4 @@
+backup		-fstype=auto	192.168.178.34:/mnt/main/backup
+public		-fstype=auto	192.168.178.34:/mnt/main/public
+ISOs		-fstype=auto 	192.168.178.34:/mnt/main/ISOs
+nfs_main	-fstype=auto	192.168.178.34:/mnt/main/nfs_main

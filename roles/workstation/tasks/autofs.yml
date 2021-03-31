@@ -1,0 +1,24 @@
+- name: install autofs
+  package:
+    name: autofs
+    state: latest
+
+- name: copy auto.master from template
+  template:
+    src: autofs/auto.master
+    dest: /etc/autofs/
+
+- name: copy auto.truenas from template
+  template:
+    src: autofs/auto.truenas
+    dest: /etc/autofs/
+
+- name: start autofs
+  systemd:
+    name: autofs
+    state: started
+
+- name: enable autofs
+    systemd:
+      name: autofs
+      state: enabled
