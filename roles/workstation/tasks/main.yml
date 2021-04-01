@@ -1,2 +1,6 @@
-- include_tasks: zsh_installation.yml
-- include_tasks: update_cloned_repos.yml
+- name: include workstation tasks
+  include_tasks: {{ item }}
+  with_items:
+    - autofs.yml
+    - zsh_installation.yml
+    - update_cloned_repos.yml
