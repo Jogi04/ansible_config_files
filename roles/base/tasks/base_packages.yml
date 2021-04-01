@@ -1,0 +1,13 @@
+- name: install base packages
+  package:
+    name: {{ item }}
+    state: latest
+  with_items:
+    - rsync
+    - wget
+    - curl
+    - bash-completions
+    - vim
+    - nano
+    - git
+    - htop
