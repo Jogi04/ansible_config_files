@@ -1,4 +1,7 @@
-- include_tasks: update_linux.yml
-- include_tasks: harden_ssh.yml
-- include_tasks: setup_ufw.yml
-- include_tasks: base_packages.yml
+- name: include tasks
+    include_tasks: {{ item }}
+    with_items:
+      - update_linux.yml
+      - harden_ssh.yml
+      - setup_ufw.yml
+      - base_packages.yml
