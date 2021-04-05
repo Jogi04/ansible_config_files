@@ -2,10 +2,10 @@ network:
   version: 2
   renderer: networkd
   ethernets:
-    enp0s3:
+    {{ ansible_default_ipv4["interface"]}}:
       dhcp4: no
       addresses:
-        - 192.168.178.155/24
-      gateway4: 192.168.178.1
+        - {{ ansible_default_ipv4["address"]}}/24
+      gateway4: {{ ansible_default_ipv4["gateway"] }}
       nameservers:
-          addresses: [192.168.178.1]
+          addresses: [{{ ansible_default_ipv4["gateway"] }}]

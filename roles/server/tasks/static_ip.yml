@@ -2,3 +2,6 @@
   template:
     src: netplan/00-installer-config.yaml
     dest: /etc/netplan/
+
+- name: apply netplan configuration
+  command: netplan apply
