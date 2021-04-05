@@ -1,1 +1,4 @@
 - name: copy netplan config from template
+  template:
+    src: netplan/00-installer-config.yaml
+    dest: /etc/netplan/
