@@ -1,5 +1,6 @@
 - name: include server tasks
-  include_tasks: { { item }
+  include_tasks: "{{ item }}"
   with_items:
     - fail2ban.yml
     - nextcloud_install.yml
+    - static_ip.yml
