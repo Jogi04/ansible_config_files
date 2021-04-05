@@ -57,7 +57,7 @@
     mode: '0755'
     state: directory
     recurse: yes
-  with_items:
+  loop:
     - /home/jogi/.zsh-plugins/
     - /home/jogi/.zsh-themes/
 

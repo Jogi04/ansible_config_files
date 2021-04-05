@@ -1,6 +1,6 @@
 - name: include workstation tasks
   include_tasks: "{{ item }}"
-  with_items:
+  loop:
     - autofs.yml
     - zsh_installation.yml
     - update_cloned_repos.yml

@@ -1,6 +1,6 @@
 - name: update server locally clone repos
   command: chdir={{ item }} git pull
-  with_items:
+  loop:
     - /home/jogi/.zsh-plugins/zsh-autosuggestions/
     - /home/jogi/.zsh-plugins/zsh-completions/
     - /home/jogi/.zsh-plugins/zsh-syntax-highlighting/
