@@ -86,7 +86,7 @@
 
 - name: create apache config file for nextcloud test_site
   template:
-    src: apache/nc.test.de.conf
+    src: apache/nc.test.de.conf.j2
     dst: /etc/apache2/sites-available/nc.test.de.conf
 
 - name: enable newly created config file (a2ensite <site>)

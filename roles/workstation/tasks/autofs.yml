@@ -5,13 +5,13 @@
 
 - name: copy auto.master from template
   template:
-    src: autofs/auto.master
-    dest: /etc/autofs/
+    src: autofs/auto.master.j2
+    dest: /etc/autofs/auto.master
 
 - name: copy auto.truenas from template
   template:
-    src: autofs/auto.truenas
-    dest: /etc/autofs/
+    src: autofs/auto.truenas.j2
+    dest: /etc/autofs/auto.truenas
 
 - name: start autofs
   systemd:
