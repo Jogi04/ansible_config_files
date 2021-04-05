@@ -1,0 +1,4 @@
+- name: make breeze theme the default for sddm
+  template:
+    src: sddm/theme.conf
+    dest: /etc/sddm.conf.d/
