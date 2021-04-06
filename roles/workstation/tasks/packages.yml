@@ -1,0 +1,21 @@
+- name: install packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - speedtest-cli
+    - openscad
+    - virtualbox
+    - pycharm-community-edition
+    - arduino
+    - arduino-avr-core
+    - kdevelop
+    - wireshark
+    - gparted
+    - firefox
+    - vlc
+    - gwenview
+    - spectacle
+    - filelight
+    - keepassxc
+    - kate
