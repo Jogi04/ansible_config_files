@@ -2,3 +2,8 @@
   template:
     src: intel_integrated_gpu/20-intel.conf.j2
     dest: /etc/X11/xorg.conf.d/20-intel.conf
+
+- name: install nvidia-prime to run programs on dedicated card when wanted
+  package:
+    name: nvidia-prime
+    state: latest
