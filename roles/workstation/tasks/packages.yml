@@ -3,6 +3,7 @@
     name: "{{ item }}"
     state: latest
   loop:
+    - nvidia-smi
     - speedtest-cli
     - openscad
     - virtualbox
