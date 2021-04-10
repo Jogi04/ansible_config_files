@@ -1,0 +1,89 @@
+- name: install apache2
+  package:
+    name: apache2
+    state: latest
+
+- name: install required php packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - libapache2-mod-php{{ php_version }}
+    - php{{ php_version }}-gd
+    - php{{ php_version }}-mysql
+    - php{{ php_version }}-curl
+    - php{{ php_version }}-mbstring
+    - php{{ php_version }}-intl
+    - php{{ php_version }}-gmp
+    - php{{ php_version }}-bcmath
+    - php{{ php_version }}-xml
+    - php{{ php_version }}-zip
+    - php-imagick
+    - php-apcu
+
+- name: enable php mods
+  command: phpenmod bcmath gmp imagick intl
+
+- name: download nextcloud from source and put it into /var/www/ directory
+  get_url:
+    url: https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip
+    dest: /var/www/
+
+- name: install unzip
+  package:
+    name: unzip
+    state: latest
+
+- name: unzip nextcloud download
+  unarchive:
+    src: /var/www/nextcloud-{{ nextcloud_version }}.zip
+    dest: /var/www/{{ domain_name }}
+    remote_src: true
+
+- name: remove zip archive
+  file:
+    path: /var/www/nextcloud-{{ nextcloud_version }}.zip
+    state: absent
+
+- name: change owner and group of /var/www/{{ domain_name }}
+  file:
+    path: /var/www/{{ domain_name }}
+    owner: www-data
+    group: www-data
+    recurse: true
+
+- name: disable apache default website
+  command: a2dissite 000-default.conf
+
+- name: create apache config file for nextcloud site
+  template:
+    src: apache/nextcloud.conf.j2
+    dest: /etc/apache2/sites-available/{{ domain_name }}.conf
+
+- name: enable newly created config file
+  command: a2ensite {{ domain_name }}
+
+- name: enable required apache mods
+  command: a2enmod dir env headers mime rewrite ssl
+
+- name: adjust nextcloud config.ini configuration
+  lineinfile:
+    path: /etc/php/{{ php_version }}/apache2/php.ini
+    regexp: '^memory_limit(.*)$'
+    line: memory_limit = 512M
+
+#- name: add certboot repo (add-apt-repository ppa:certbot/certbot)
+#  command: add-apt-repository ppa:certbot/certbot
+
+#- name: install certboot
+#  package:
+#    name: certboot
+#    state: latest
+
+#- name: create ssl sertificate
+#  command: certbot --apache -d nextcloud
+
+- name: restart apache service to apply changes
+  systemd:
+    name: apache2
+    state: restarted

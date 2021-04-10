@@ -1,0 +1,57 @@
+- name: install mysql
+  package:
+    name: mysql-server
+    state: latest
+
+- name: install pip3
+  package:
+    name: python3-pip
+    state: latest
+
+- name: install PyMySQL
+  pip:
+    name: PyMySQL
+
+- name: Change the authentication plugin of MySQL root user to mysql_native_password
+  command: mysql -u root -e 'UPDATE mysql.user SET plugin="mysql_native_password" WHERE user="root" AND host="localhost"'
+
+- name: Flush Privileges
+  command: mysql -u root -e 'FLUSH PRIVILEGES'
+
+- name: set root password
+  mysql_user:
+    login_host: 'localhost'
+    login_user: 'root'
+    login_password: ''
+    name: 'root'
+    password: '{{ mysql_root_password }}'
+    state: present
+
+- name: removes anonymous user accounts
+  mysql_user:
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    name: ''
+    host_all: yes
+    state: absent
+
+- name: set root access to localhost only
+  mysql_user:
+    login_user: root
+    login_password: '{{ mysql_root_password }}'
+    name: root
+    host: (localhost, 127.0.0.1, ::1)
+
+- name: remove test databse
+  mysql_db:
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    db: test
+    state: absent
+
+- name: create nextcloud database
+  mysql_db:
+    login_user: root
+    login_password: '{{ mysql_root_password }}'
+    name: nextcloud
+    state: present

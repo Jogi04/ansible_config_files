@@ -1,0 +1,15 @@
+ <VirtualHost *:80>
+     DocumentRoot "/var/www/{{ domain_name }}"
+     ServerName {{ domain_name }}
+
+     <Directory "/var/www/{{ domain_name }}/">
+         Options MultiViews FollowSymlinks
+         AllowOverride All
+         Order allow,deny
+         Allow from all
+    </Directory>
+
+    TransferLog /var/log/apache2/{{ domain_name }}_access.log
+    ErrorLog /var/log/apache2/{{ domain_name }}_error.log
+
+ </VirtualHost>
