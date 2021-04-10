@@ -17,11 +17,7 @@ set -e
 # You should have received a copy of the GNU General Public License
 # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
 
-. "/usr/share/grub/grub-mkconfig_lib"
-
 LABEL="UEFI Firmware Settings"
-
-gettext_printf "Adding boot menu entry for EFI firmware configuration\n" >&2
 
 cat << EOF
 menuentry '$LABEL' \$menuentry_id_option 'uefi-firmware' {
