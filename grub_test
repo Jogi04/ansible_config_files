@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 set -e
 
 # grub-mkconfig helper script.
