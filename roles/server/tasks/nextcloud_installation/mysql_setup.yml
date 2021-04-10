@@ -12,6 +12,16 @@
   pip:
     name: PyMySQL
 
+- name: start mysql
+  systemd:
+    name: mysql
+    state: started
+
+- name: enable mysql
+  systemd:
+    name: mysql
+    state: enabled
+
 - name: Change the authentication plugin of MySQL root user to mysql_native_password
   command: mysql -u root -e 'UPDATE mysql.user SET plugin="mysql_native_password" WHERE user="root" AND host="localhost"'
 
