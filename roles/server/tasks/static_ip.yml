@@ -1,7 +1,0 @@
-- name: copy netplan config from template
-  template:
-    src: netplan/99_config.yaml.j2
-    dest: /etc/netplan/99_config.yaml
-
-- name: apply netplan configuration
-  command: netplan apply

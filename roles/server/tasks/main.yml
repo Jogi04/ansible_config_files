@@ -3,4 +3,3 @@
   loop:
     - fail2ban.yml
     - nextcloud_install.yml
-    - static_ip.yml
