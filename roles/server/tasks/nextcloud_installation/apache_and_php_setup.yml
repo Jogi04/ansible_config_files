@@ -96,6 +96,8 @@
 #- name: create ssl sertificate
 #  command: certbot --apache -d nextcloud
 
+#- name: add memcache and update trusted domains and default_phone_location
+
 - name: restart apache service to apply changes
   systemd:
     name: apache2
