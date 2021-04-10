@@ -1,0 +1,13 @@
+- name: add grub entry for uefi firmware settings
+  template:
+    src: grub/30_uefi-firmware.j2
+    dest: /etc/grub.d/30_uefi-firmware
+    mode: '0775'
+    owner: root
+    group: root
+
+- name: update grub configuration
+  command: update-grub
+
+- name: reboot machine to make changes take affect
+  reboot:

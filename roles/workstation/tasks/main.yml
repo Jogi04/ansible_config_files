@@ -6,3 +6,4 @@
     - update_cloned_repos.yml
     - sddm_configuration.yml
     - intel_integrated_gpu.yml
+    - grub.yml
