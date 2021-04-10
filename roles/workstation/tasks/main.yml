@@ -1,8 +1,8 @@
 - name: include workstation tasks
   include_tasks: "{{ item }}"
   loop:
-    - autofs.yml
-    - zsh_installation.yml
-    - update_cloned_repos.yml
-    - sddm_configuration.yml
-    - grub.yml
+    #- autofs.yml
+    #- zsh_installation.yml
+    #- update_cloned_repos.yml
+    #- sddm_configuration.yml
+    #- grub.yml

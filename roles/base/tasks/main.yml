@@ -1,7 +1,7 @@
 - name: include base packages
   include_tasks: "{{ item }}"
   loop:
-    - update_linux.yml
-    - harden_ssh.yml
-    - setup_ufw.yml
-    - base_packages.yml
+    #- update_linux.yml
+    #- harden_ssh.yml
+    #- setup_ufw.yml
+    #- base_packages.yml
