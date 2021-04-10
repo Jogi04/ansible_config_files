@@ -6,6 +6,12 @@
     owner: root
     group: root
 
+- name: set grub timeout to 1 second
+  lineinfile:
+    path: /etc/default/grub
+    regexp: '^(.*)GRUB_TIMEOUT=(.*)$'
+    line: GRUB_TIMEOUT=1
+
 - name: update grub configuration
   command: update-grub
 
