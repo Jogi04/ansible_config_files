@@ -37,8 +37,11 @@
 - name: unzip nextcloud download
   unarchive:
     src: /var/www/nextcloud-{{ nextcloud_version }}.zip
-    dest: /var/www/{{ domain_name }}
+    dest: /var/www/
     remote_src: true
+
+- name: rename nextcloud root directory to {{ domain_name }}
+  command: mv /var/www/nextcloud /var/www/{{ domain_name }}
 
 - name: remove zip archive
   file:
