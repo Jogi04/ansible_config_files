@@ -11,7 +11,7 @@
 - name: enable apache2
   systemd:
     name: apache2
-    state: enabled
+    enabled: true
 
 - name: install required php packages
   package:

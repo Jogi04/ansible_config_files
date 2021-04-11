@@ -1,25 +1,25 @@
-- name: install ufw (apt/pacman/dnf install/-S/install openssh)
+- name: install ufw
   package:
     update_cache: true
     name: ufw
     state: latest
 
-- name: deny server incoming traffic (ufw default deny incoming)
+- name: deny server incoming traffic
   ufw:
     default: deny
     direction: incoming
 
-- name: allow server outgoing traffic (ufw default allow outgoing)
+- name: allow server outgoing traffic
   ufw:
    default: allow
    direction: outgoing
 
-- name: limit port 22 for ssh connections (ufw limit 22)
+- name: limit port 22 for ssh connections
   ufw:
     rule: limit
     port : '22'
     proto: tcp
 
-- name: enable ufw (ufw enable)
+- name: enable ufw
   ufw:
-    state: enabled
+    enabled: true
