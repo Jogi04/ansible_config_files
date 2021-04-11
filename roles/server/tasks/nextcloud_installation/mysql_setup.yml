@@ -20,13 +20,10 @@
 - name: enable mysql
   systemd:
     name: mysql
-    state: enabled
+    enabled: true
 
-- name: Change the authentication plugin of MySQL root user to mysql_native_password
-  command: mysql -u root -e 'UPDATE mysql.user SET plugin="mysql_native_password" WHERE user="root" AND host="localhost"'
-
-- name: Flush Privileges
-  command: mysql -u root -e 'FLUSH PRIVILEGES'
+- name: Change the authentication plugin of MySQL root user to mysql_native_password and specify password
+  command: mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '{{ mysql_root_password }}'"
 
 - name: mysql_secure_installation
   mysql_secure_installation:
