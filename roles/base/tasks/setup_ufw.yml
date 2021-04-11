@@ -4,22 +4,16 @@
     name: ufw
     state: latest
 
-- name: deny server incoming traffic
+- name: deny incoming traffic
   ufw:
     default: deny
     direction: incoming
 
-- name: allow server outgoing traffic
+- name: allow outgoing traffic
   ufw:
    default: allow
    direction: outgoing
 
-- name: limit port 22 for ssh connections
-  ufw:
-    rule: limit
-    port : '22'
-    proto: tcp
-
 - name: enable ufw
   ufw:
-    enabled: true
+    state: enabled
