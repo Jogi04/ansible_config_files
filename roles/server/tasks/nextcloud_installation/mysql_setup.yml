@@ -28,36 +28,14 @@
 - name: Flush Privileges
   command: mysql -u root -e 'FLUSH PRIVILEGES'
 
-- name: set root password
-  mysql_user:
-    login_host: 'localhost'
-    login_user: 'root'
-    login_password: ''
-    name: 'root'
-    password: '{{ mysql_root_password }}'
-    state: present
-
-- name: removes anonymous user accounts
-  mysql_user:
+- name: mysql_secure_installation
+  mysql_secure_installation:
     login_user: root
-    login_password: "{{ mysql_root_password }}"
-    name: ''
-    host_all: yes
-    state: absent
-
-- name: set root access to localhost only
-  mysql_user:
-    login_user: root
-    login_password: '{{ mysql_root_password }}'
-    name: root
-    host: (localhost, 127.0.0.1, ::1)
-
-- name: remove test databse
-  mysql_db:
-    login_user: root
-    login_password: "{{ mysql_root_password }}"
-    db: test
-    state: absent
+    login_password: {{ mysql_root_password }}
+    disable_remote_root_login: true
+    remove_anonymous_user: true
+    remove_test_db: true
+    reload_privilege_table: true
 
 - name: create nextcloud database
   mysql_db:
