@@ -18,12 +18,6 @@
     line: 'PasswordAuthentication no'
     firstmatch: true
 
-- name: ufw limit port 22 for ssh connections
-  ufw:
-    rule: limit
-    port : '22'
-    proto: tcp
-
 - name: restart ssh service to apply changes
   systemd:
     name: sshd
