@@ -1,3 +1,9 @@
+- name: start and enable openssh
+  systemd:
+    name: sshd
+    state: started
+    enabled: true
+
 - name: disable root login
   lineinfile:
     path: /etc/ssh/sshd_config
@@ -11,6 +17,12 @@
     regexp: '^(.*)PasswordAuthentication(.*)$'
     line: 'PasswordAuthentication no'
     firstmatch: true
+
+- name: ufw limit port 22 for ssh connections
+  ufw:
+    rule: limit
+    port : '22'
+    proto: tcp
 
 - name: restart ssh service to apply changes
   systemd:
