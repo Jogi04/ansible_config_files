@@ -3,6 +3,12 @@
     name: autofs
     state: latest
 
+- name: start and enable autofs
+  systemd:
+    name: autofs
+    state: started
+    enabled: true
+
 - name: copy auto.master from template
   template:
     src: autofs/auto.master.j2
@@ -12,13 +18,3 @@
   template:
     src: autofs/auto.truenas.j2
     dest: /etc/autofs/auto.truenas
-
-- name: start autofs
-  systemd:
-    name: autofs
-    state: started
-
-- name: enable autofs
-    systemd:
-      name: autofs
-      state: enabled

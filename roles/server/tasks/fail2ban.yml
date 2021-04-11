@@ -3,6 +3,12 @@
     name: fail2ban
     state: latest
 
+- name: start and enable fail2ban
+  systemd:
+    name: fail2ban
+    state: started
+    enabled: true
+
 - name: copy main config file (jail.local) from template
   template:
     src: jail_main.local
