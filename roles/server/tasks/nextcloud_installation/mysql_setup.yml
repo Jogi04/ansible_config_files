@@ -31,7 +31,7 @@
 - name: mysql_secure_installation
   mysql_secure_installation:
     login_user: root
-    login_password: {{ mysql_root_password }}
+    login_password: '{{ mysql_root_password }}'
     disable_remote_root_login: true
     remove_anonymous_user: true
     remove_test_db: true
