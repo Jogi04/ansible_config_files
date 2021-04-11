@@ -1,14 +1,13 @@
 - name: install base packages
   package:
-    name: {{ item }}
+    name: '{{ item }}'
     state: latest
   loop:
-    - openssh
     - ethtool
     - rsync
     - wget
     - curl
-    - bash-completions
+    - bash-completion
     - vim
     - nano
     - git
