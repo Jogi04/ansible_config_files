@@ -1,0 +1,22 @@
+- name: install cron
+  package:
+    name: '{{ cron_package }}'
+    state: latest
+
+- name: create cron job for daily updates on Debian-based systems
+  cron:
+    name: daily update
+    job: apt update && apt upgrade -y
+    user: root
+    minute: '0'
+    hour: '19'
+  when: ansible_os_family == 'Debian'
+
+- name: create cron job for daily updates on RedHat-based systems
+  cron:
+    name: daily update
+    job: yum update && yum upgrade -y
+    user: root
+    minute: '0'
+    hour: '19'
+  when: ansible_os_family == 'RedHat'
