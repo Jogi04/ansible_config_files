@@ -1,0 +1,4 @@
+- name: copy hosts from template
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
