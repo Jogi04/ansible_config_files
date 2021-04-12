@@ -2,6 +2,7 @@
   include_tasks: "{{ item }}"
   loop:
     #- update_linux.yml
+    #- set_hostname.yml
     #- setup_ufw.yml
     #- setup_ssh.yml
     #- exchange_ssh_keys.yml
