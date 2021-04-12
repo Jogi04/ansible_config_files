@@ -7,3 +7,4 @@
     #- exchange_ssh_keys.yml
     #- base_packages.yml
     #- language_setup.yml
+    #- keyboard_layout_setup.yml
