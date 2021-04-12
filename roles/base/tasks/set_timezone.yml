@@ -1,0 +1,5 @@
+- name: set timezone
+  command: timedatectl set-timezone Europe/Berlin
+
+- name: enable ntp service
+  command: timedatectl set-ntp true
