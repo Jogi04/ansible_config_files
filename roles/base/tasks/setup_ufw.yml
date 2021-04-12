@@ -38,3 +38,8 @@
 - name: enable ufw
   ufw:
     state: enabled
+
+- name: enable ufw service since it is disabled on arch-based distros by default
+  systemd:
+    name: ufw
+    enabled: true
