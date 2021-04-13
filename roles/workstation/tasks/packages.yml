@@ -3,8 +3,12 @@
     name: "{{ item }}"
     state: latest
   loop:
+    # terminal utils
     - nvidia-smi
     - speedtest-cli
+    - nmap
+    # development utils
+    - ansible
     - openscad
     - virtualbox
     - pycharm-community-edition
@@ -13,6 +17,7 @@
     - kdevelop
     - wireshark
     - gparted
+    # desktop utils
     - firefox
     - vlc
     - gwenview

@@ -13,3 +13,5 @@
     - git
     - htop
     - lshw
+    - unzip
+    - stress
