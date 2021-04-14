@@ -1,0 +1,14 @@
+# base role
+hostname:
+ssh_package:
+
+# server role
+mysql_root_password:
+php_version:
+nextcloud_version:
+domain_name:
+webserver:
+cron_package:
+
+# workstation role
+pulseaudio_bluetooth_package:
