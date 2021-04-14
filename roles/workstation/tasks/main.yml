@@ -6,4 +6,5 @@
     #- update_cloned_repos.yml
     #- sddm_configuration.yml
     #- audio_setup.yml
+    #- nfs_client_setup.yml
     #- grub.yml
