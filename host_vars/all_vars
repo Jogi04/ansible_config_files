@@ -2,6 +2,7 @@
 hostname:
 ssh_package:
 network_address:
+internet_facing:
 
 # server role
 mysql_root_password:
