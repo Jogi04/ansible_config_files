@@ -1,6 +1,7 @@
 # base role
 hostname:
 ssh_package:
+network_address:
 
 # server role
 mysql_root_password:
