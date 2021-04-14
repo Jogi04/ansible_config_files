@@ -11,18 +11,18 @@
 
 - name: copy main config file (jail.local) from template
   template:
-    src: jail_main.local
+    src: jail.local.j2
     dest: /etc/fail2ban/jail.local
 
 - name: append main config file (jail.local) for securing ssh
   blockinfile:
     path: /etc/fail2ban/jail.local
-    block: fail2ban/jail_ssh.local
+    block: fail2ban/jail_ssh.local.j2
 
 - name: append main config file (jail.local) if it's a web server
   blockinfile:
     path: /etc/fail2ban/jail.local
-    block: fail2ban/jail_apache.local
+    block: fail2ban/jail_apache.local.j2
   when: web_server is defined and web_server == true
 
 - name: restart fail2ban
