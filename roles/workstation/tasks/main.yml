@@ -5,4 +5,5 @@
     #- zsh_installation.yml
     #- update_cloned_repos.yml
     #- sddm_configuration.yml
+    #- audio_setup.yml
     #- grub.yml
