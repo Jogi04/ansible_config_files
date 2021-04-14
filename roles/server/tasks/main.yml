@@ -5,4 +5,4 @@
     #- nextcloud_installation/apache_and_php_setup.yml
     #- fail2ban.yml
     #- auto_updates.yml
-    #- nfs_server_setup
+    #- nfs_server_setup.yml
