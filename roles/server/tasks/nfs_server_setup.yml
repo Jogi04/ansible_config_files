@@ -2,4 +2,3 @@
   package:
     name: '{{ nfs_server_package }}'
     state: latest
-
