@@ -19,21 +19,7 @@
     rule: limit
     port: 22
     proto: tcp
-    src: 192.168.178.0/24
-
-- name: allow port 80 if it's a web server
-  ufw:
-    rule: allow
-    port: 80
-    proto: tcp
-  when: webserver is defined and webserver == true
-
-- name: allow port 443 if it's a web server
-  ufw:
-    rule: allow
-    port: 443
-    proto: tcp
-  when: webserver is defined and webserver == true
+    src: {{ network_address }}/24
 
 - name: enable ufw
   ufw:
