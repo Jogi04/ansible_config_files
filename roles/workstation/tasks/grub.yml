@@ -13,7 +13,7 @@
     line: GRUB_TIMEOUT=1
 
 - name: update grub configuration
-  command: update-grub
+  command: grub-mkconfig -o /boot/grub/grub.cfg
 
 - name: reboot machine to make changes take affect
   reboot:
