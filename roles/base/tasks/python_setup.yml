@@ -1,0 +1,9 @@
+- name: install python package
+  package:
+    name: '{{ python_package }}'
+    state: latest
+
+- name: install pip
+  package:
+    name: '{{ pip_package }}'
+    state: latest

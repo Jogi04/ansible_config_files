@@ -3,6 +3,8 @@ hostname:
 ssh_package:
 network_address:
 internet_facing:
+python_package:
+pip_package:
 
 # server role
 mysql_root_password:
