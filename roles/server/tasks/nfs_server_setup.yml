@@ -1,0 +1,4 @@
+- name: install nfs server
+  package:
+    name: '{{ nfs_server_package }}'
+    state: latest

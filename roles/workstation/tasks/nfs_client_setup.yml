@@ -1,0 +1,4 @@
+- name: install nfs client
+  package:
+    name: '{{ nfs_client_package }}'
+    state: latest
