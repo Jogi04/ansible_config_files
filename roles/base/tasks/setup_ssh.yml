@@ -1,3 +1,8 @@
+- name: install ssh
+  package:
+    name: '{{ ssh_package }}'
+    state: latest
+
 - name: start and enable openssh
   systemd:
     name: sshd
