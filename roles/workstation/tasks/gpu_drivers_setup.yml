@@ -1,0 +1,16 @@
+- name: install nvidia drivers and tools
+  package:
+    name: '{{ item }}'
+  loop:
+    - nvidia
+    - nvidia-lts
+    - nvidia-utils
+    - nvidia-settings
+    - nvidia-prime
+    - nvidia-smi
+
+- name: install intel integrated gpu driver
+  package:
+    name: xf86-video-intel
+    state: latest
+  when: intel_integrated_gpu is defined and intel_integrated_gpu == true

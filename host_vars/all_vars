@@ -16,3 +16,4 @@ cron_package:
 
 # workstation role
 pulseaudio_bluetooth_package:
+intel_integrated_gpu:
