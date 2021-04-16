@@ -1,0 +1,15 @@
+- name: install cups and hp drivers
+  package:
+    name: '{{ item }}'
+    state: latest
+  loop:
+    - cups
+    - hplip
+
+- name: install kde plasma printing applet
+  package:
+    name: print-manager
+    state: latest
+
+- name: create a backup of cupsd.conf since it has been overriten by random html code several times
+  command: cp /etc/cups/cupsd.conf /etc/cups/cupsd.conf.bak
