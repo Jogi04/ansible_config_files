@@ -1,0 +1,44 @@
+- name: install xorg and xrandr for display configuration
+  package:
+    name: '{{ item }}'
+    state: latest
+  loop:
+    - xorg-server
+    - xorg-xrandr
+
+- name: install sddm and sddm-kcm (for configuraton from plasma-settings)
+  package:
+    name: '{{ item }}'
+    state: latest
+  loop:
+    - sddm
+    - sddm-kcm
+
+- name: enable sddm
+  systemd:
+    name: sddm
+    enabled: true
+
+- name: set german keyboard layout for sddm login screen
+  command: localectl set-x11-keymap de
+
+- name: install kde plasma desktop (minimal package)
+  package:
+    name: plasma-desktop
+    state: latest
+
+- name: install useful kde plasma settings applets
+  package:
+    name: '{{ item }}'
+    state: latest
+  loop:
+    - plasma-nm             # network manager applet
+    - plasma-pa             # pulseaudio applet
+    - powerdevil            # power management applet
+    - plasma-thunderbolt    # thunderbolt applet
+    - kscreen               # screen configuration applet
+
+- name: install latte-dock
+  package:
+    name: latte-dock
+    state: latest
