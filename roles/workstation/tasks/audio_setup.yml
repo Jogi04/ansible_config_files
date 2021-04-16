@@ -2,22 +2,3 @@
   package:
     name: pulseaudio
     state: latest
-
-- name: install bluetooth and pulseaudio bluetooth support
-  package:
-    name: '{{ item }}'
-    state: latest
-  loop:
-    - bluez
-    - '{{ pulseaudio_bluetooth_package }}'
-
-- name: install kde bluetooth applet
-  package:
-    name: bluedevil
-    state: latest
-
-- name: start and enable bluetooth service
-  systemd:
-    name: bluetooth
-    state: started
-    enabled: true
