@@ -12,4 +12,4 @@
     #- sddm_configuration.yml
     #- packages.yml
     #- printer_setup.yml
-    #- grub.yml
+    #- grub_configuration.yml
