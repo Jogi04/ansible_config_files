@@ -1,2 +1,2 @@
-# ansible
-personal ansible configurations and playbooks
+# Ansible
+personal Ansible configurations and playbooks
