@@ -1,0 +1,19 @@
+# base role
+hostname:
+ssh_package:
+network_address:
+internet_facing:
+python_package:
+pip_package:
+
+# server role
+mysql_root_password:
+php_version:
+nextcloud_version:
+domain_name:
+web_server:
+cron_package:
+
+# workstation role
+pulseaudio_bluetooth_package:
+has_intel_integrated_gpu:
