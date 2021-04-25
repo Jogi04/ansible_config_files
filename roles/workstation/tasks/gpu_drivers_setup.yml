@@ -13,4 +13,4 @@
   package:
     name: xf86-video-intel
     state: latest
-  when: intel_integrated_gpu is defined and intel_integrated_gpu == true
+  when: has_intel_integrated_gpu is defined and has_intel_integrated_gpu == true
