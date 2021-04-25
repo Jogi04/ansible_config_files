@@ -1,0 +1,25 @@
+- name: download AUR packages
+  command: chdir=/opt git clone {{ item }}
+  loop:
+    - https://aur.archlinux.org/spotify.git
+    - https://aur.archlinux.org/downgrade.git
+    - https://github.com/ventoy/Ventoy.git      # added although it's not an aur package
+  when: ansible_distribution == 'Archlinux'
+
+- name: change ownership of package directory
+  file:
+    path: {{ item }}
+    owner: jogi
+    group: jogi
+    state: directory
+    recurse: true
+  loop:
+    - /opt/spotify
+    - /opt/downgrade
+
+- name: install packages
+    become_user: jogi
+    command: chdir={{ item }} makepkg -si --noconfirm
+    loop:
+      - /opt/spotify
+      - /opt/downgrade

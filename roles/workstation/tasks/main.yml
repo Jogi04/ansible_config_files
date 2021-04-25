@@ -3,7 +3,6 @@
   loop:
     #- autofs.yml
     #- zsh_installation.yml
-    #- update_cloned_repos.yml
     #- audio_setup.yml
     #- bluetooth_setup.yml
     #- nfs_client_setup.yml
@@ -12,4 +11,5 @@
     #- sddm_configuration.yml
     #- packages.yml
     #- printer_setup.yml
+    #- aur_packages.yml
     #- grub_configuration.yml
