@@ -1,8 +1,7 @@
 # base role
 hostname:
 ssh_package:
-network_address:
-internet_facing:
+is_internet_facing:
 python_package:
 pip_package:
 

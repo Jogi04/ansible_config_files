@@ -20,14 +20,14 @@
     port: 22
     proto: tcp
     src: '{{ ansible_default_ipv4["network"] }}/24'
-  when: internet_facing is defined and internet_facing == false
+  when: is_internet_facing is defined and is_internet_facing == false
 
 - name: limit port 22 from anywhere if it needs to be accessed from the Internet
   ufw:
     rule: limit
     port: 22
     proto: tcp
-  when: internet_facing is defined and internet_facing == true
+  when: is_internet_facing is defined and is_internet_facing == true
 
 - name: enable ufw
   ufw:
