@@ -85,18 +85,16 @@
     regexp: '^memory_limit(.*)$'
     line: memory_limit = 512M
 
-#- name: add certboot repo (add-apt-repository ppa:certbot/certbot)
-#  command: add-apt-repository ppa:certbot/certbot
+- name: install certbot and python certbot apache
+  package:
+    name: '{{ item }}'
+    state: latest
+  loop:
+    - certbot
+    - python3-certbot-apache
 
-#- name: install certboot
-#  package:
-#    name: certboot
-#    state: latest
-
-#- name: create ssl sertificate
-#  command: certbot --apache -d nextcloud
-
-#- name: add memcache and update trusted domains and default_phone_location
+- name: obtain ssl certificate
+  command: certbot --apache --domain {{ domain_name }} --redirect --agree-tos --register-unsafely-without-email
 
 - name: allow port 80
   ufw:
