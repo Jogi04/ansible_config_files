@@ -1,7 +1,6 @@
 - name: include workstation tasks
   include_tasks: "{{ item }}"
   loop:
-    #- autofs.yml
     #- zsh_installation.yml
     #- audio_setup.yml
     #- bluetooth_setup.yml
