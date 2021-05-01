@@ -1,18 +1,18 @@
 - name: include base tasks
   include_tasks: "{{ item }}"
   loop:
-    #- set_timezone.yml
     #- update_linux.yml
+    #- set_timezone.yml
     #- set_hostname.yml
     #- set_hosts.yml
-    #- ufw_setup.yml
-    #- ssh_setup.yml
-    #- exchange_ssh_keys.yml
-    #- base_packages.yml
     #- language_setup.yml
     #- keyboard_layout_setup.yml
-    #- enable_kernel_shortcuts.yml
+    #- ufw_setup.yml
+    #- exchange_ssh_keys.yml
+    #- ssh_setup.yml
+    #- base_packages.yml
     #- python_setup.yml
+    #- enable_kernel_shortcuts.yml
 
 - include_tasks: user_setup.yml
   when: ansible_distribution == 'Archlinux'
