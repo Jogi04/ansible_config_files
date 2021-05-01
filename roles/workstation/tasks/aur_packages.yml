@@ -3,7 +3,7 @@
   loop:
     - https://aur.archlinux.org/spotify.git
     - https://aur.archlinux.org/downgrade.git
-    - https://github.com/ventoy/Ventoy.git      # added although it's not an aur package
+    - https://github.com/ventoy/Ventoy.git      # added although it's technically not an aur package
   when: ansible_distribution == 'Archlinux'
 
 - name: change ownership of package directory
