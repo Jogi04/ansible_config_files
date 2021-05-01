@@ -12,4 +12,5 @@
     #- packages.yml
     #- printer_setup.yml
     #- aur_packages.yml
+    #- pentesting_setup.yml
     #- grub_configuration.yml
