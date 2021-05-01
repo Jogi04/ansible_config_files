@@ -37,6 +37,7 @@
     - powerdevil            # power management applet
     - plasma-thunderbolt    # thunderbolt applet
     - kscreen               # screen configuration applet
+    - print-manager         # printer managing applet
 
 - name: install latte-dock
   package:
