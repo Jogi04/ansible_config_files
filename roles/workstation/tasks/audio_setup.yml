@@ -2,3 +2,8 @@
   package:
     name: pulseaudio
     state: latest
+
+- name: install pulseaudio bluetooth package
+  pacakge:
+    name: '{{ pulseaudio_bluetooth_package }}'
+    state: latest
