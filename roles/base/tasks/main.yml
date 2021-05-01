@@ -2,11 +2,7 @@
   include_tasks: "{{ item }}"
   loop:
     #- update_linux.yml
-    #- set_timezone.yml
-    #- set_hostname.yml
-    #- set_hosts.yml
-    #- language_setup.yml
-    #- keyboard_layout_setup.yml
+    #- locale_setup.yml
     #- ufw_setup.yml
     #- exchange_ssh_keys.yml
     #- ssh_setup.yml

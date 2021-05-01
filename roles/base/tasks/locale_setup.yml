@@ -1,0 +1,23 @@
+- name: set timezone
+  command: timedatectl set-timezone Europe/Berlin
+
+- name: enable ntp service
+  command: timedatectl set-ntp true
+
+- name: copy hostname from template
+  template:
+    src: hostname.j2
+    dest: /etc/hostname
+
+- name: copy hosts from template
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+
+- name: set language using localectl
+  command: localectl set-locale LANG='en_US.UTF-8 UTF-8'
+
+- name: create vconsole.conf from template to set keyboard layout
+  template:
+    src: vconsole.conf.j2
+    dest: /etc/vconsole.conf

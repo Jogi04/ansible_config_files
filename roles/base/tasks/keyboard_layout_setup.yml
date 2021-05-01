@@ -1,4 +1,0 @@
-- name: create vconsole.conf from template to set keyboard layout
-  template:
-    src: vconsole.conf.j2
-    dest: /etc/vconsole.conf
