@@ -8,6 +8,7 @@
     #- sddm_configuration.yml
     #- printer_setup.yml
     #- packages.yml
+    #- kde_autostart_programs_setup.yml
     #- zsh_installation.yml
     #- pentesting_setup.yml
     #- aur_packages.yml
