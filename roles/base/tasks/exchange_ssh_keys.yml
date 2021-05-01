@@ -10,7 +10,7 @@
     state: present
     key: "{{ lookup('file', '/home/jogi/.ssh/{{ ansible_nodename }}.pub') }}"
 
-- name: add host to ~/.ssh/config file locally so the private key doesn't need to specified every time
+- name: add host to ~/.ssh/config file locally so the private key doesn't need to be specified every time
   become_user: jogi
   blockinfile:
     path: /home/jogi/.ssh/config
