@@ -6,7 +6,7 @@
     - xorg-server
     - xorg-xrandr
 
-- name: install sddm and sddm-kcm (for configuraton from plasma-settings)
+- name: install sddm and sddm-kcm (for configuration from plasma-settings)
   package:
     name: '{{ item }}'
     state: latest
