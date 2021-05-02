@@ -7,8 +7,8 @@
     #- update_linux.yml
     #- locale_setup.yml
     #- ufw_setup.yml
-    #- exchange_ssh_keys.yml
     #- ssh_setup.yml
+    #- exchange_ssh_keys.yml
     #- base_packages.yml
     #- python_setup.yml
     #- enable_kernel_shortcuts.yml
