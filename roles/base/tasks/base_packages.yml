@@ -3,15 +3,14 @@
     name: '{{ item }}'
     state: latest
   loop:
-    - ethtool
     - rsync
     - wget
     - curl
     - bash-completion
-    - vim
     - nano
     - git
     - htop
-    - lshw
     - unzip
-    - stress
+    - tar
+    - ethtool
+    - lshw
