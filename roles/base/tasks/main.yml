@@ -1,3 +1,6 @@
+- include_tasks: user_setup.yml
+  when: ansible_distribution == 'Archlinux'
+
 - name: include base tasks
   include_tasks: "{{ item }}"
   loop:
@@ -9,6 +12,3 @@
     #- base_packages.yml
     #- python_setup.yml
     #- enable_kernel_shortcuts.yml
-
-- include_tasks: user_setup.yml
-  when: ansible_distribution == 'Archlinux'
