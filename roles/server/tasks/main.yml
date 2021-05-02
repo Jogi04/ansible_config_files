@@ -1,7 +1,17 @@
-- name: include server tasks
+- name: include nextcloud tasks if it's a nextcloud instance
   include_tasks: "{{ item }}"
   loop:
     #- nextcloud_installation/mysql_setup.yml
     #- nextcloud_installation/apache_and_php_setup.yml
-    #- auto_updates.yml
+  when: is_nextcloud_instance is defined and is_nextcloud_instance == true
+
+- name: include nfs server tasks if it's a nfs server
+  include_tasks: '{{ item }}'
+  loop:
     #- nfs_server_setup.yml
+  when: is_nfs_server is defined and is_nfs_server == true
+
+- name: include server tasks
+  include_tasks: '{{ item }}'
+  loop:
+    #- auto_updates.yml

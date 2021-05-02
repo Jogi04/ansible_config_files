@@ -6,11 +6,13 @@ python_package:
 pip_package:
 
 # server role
+is_nextcloud_instance:
 mysql_root_password:
 php_version:
 nextcloud_version:
 domain_name:
 web_server:
+is_nfs_server:
 cron_package:
 
 # workstation role
