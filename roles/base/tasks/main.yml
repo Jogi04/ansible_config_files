@@ -1,6 +1,3 @@
-- include_tasks: user_setup.yml
-  when: ansible_distribution == 'Archlinux'
-
 - name: include base tasks
   include_tasks: "{{ item }}"
   loop:
