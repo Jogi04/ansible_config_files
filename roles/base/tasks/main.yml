@@ -1,11 +1,11 @@
 - name: include base tasks
   include_tasks: "{{ item }}"
   loop:
-    #- update_linux.yml
+    - update_linux.yml
     #- locale_setup.yml
     #- ufw_setup.yml
     #- ssh_setup.yml
     #- exchange_ssh_keys.yml
     #- base_packages.yml
     #- python_setup.yml
-    #- enable_kernel_shortcuts.yml
+    #- enable_kernel_level_shortcuts.yml

@@ -1,9 +1,9 @@
 # base role
 hostname:
-ssh_package:
-is_internet_facing:
-python_package:
-pip_package:
+ssh_package: openssh
+is_internet_facing: false
+python_package: python
+pip_package: python-pip
 
 # server role
 is_nextcloud_instance:
@@ -16,5 +16,5 @@ is_nfs_server:
 cron_package:
 
 # workstation role
-pulseaudio_bluetooth_package:
-has_intel_integrated_gpu:
+pulseaudio_bluetooth_package: pulseaudio-bluetooth
+has_intel_integrated_gpu: true
