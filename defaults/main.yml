@@ -8,7 +8,7 @@ pip_package: python-pip
 # server role
 is_nextcloud_instance: false
 mysql_root_password:
-php_version:
+php_version: 7.4
 nextcloud_version:
 domain_name:
 is_nfs_server: false
