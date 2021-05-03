@@ -8,7 +8,7 @@
 
 - name: change ownership of package directory
   file:
-    path: {{ item }}
+    path: '{{ item }}'
     owner: jogi
     group: jogi
     state: directory
