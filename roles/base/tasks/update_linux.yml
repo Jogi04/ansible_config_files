@@ -16,3 +16,6 @@
     name: '*'
     state: latest
   when: ansible_os_family == 'RedHat'
+
+- name: reboot host to apply updates (If kernel is updated and the system is not rebooted, there are conflicts with ufw/iptables later on)
+  reboot:
