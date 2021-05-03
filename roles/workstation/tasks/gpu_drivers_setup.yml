@@ -7,7 +7,6 @@
     - nvidia-utils
     - nvidia-settings
     - nvidia-prime
-    - nvidia-smi
 
 - name: install intel integrated gpu driver
   package:
