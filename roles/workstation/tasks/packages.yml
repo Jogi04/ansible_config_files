@@ -13,7 +13,6 @@
     - pycharm-community-edition
     - arduino
     - arduino-avr-core
-    - kdevelop
     - wireshark
     - yakuake
     # desktop utils
