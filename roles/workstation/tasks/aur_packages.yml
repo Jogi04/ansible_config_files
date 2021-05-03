@@ -18,8 +18,8 @@
     - /opt/downgrade
 
 - name: install packages
-    become_user: jogi
-    command: chdir={{ item }} makepkg -si --noconfirm
-    loop:
-      - /opt/spotify
-      - /opt/downgrade
+  become_user: jogi
+  command: chdir={{ item }} makepkg -si --noconfirm
+  loop:
+    - /opt/spotify
+    - /opt/downgrade
