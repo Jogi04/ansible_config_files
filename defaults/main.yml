@@ -6,15 +6,15 @@ python_package: python
 pip_package: python-pip
 
 # server role
-is_nextcloud_instance:
+is_nextcloud_instance: false
 mysql_root_password:
 php_version:
 nextcloud_version:
 domain_name:
-web_server:
-is_nfs_server:
-cron_package:
+is_nfs_server: false
+cron_package: cronie
 
 # workstation role
 pulseaudio_bluetooth_package: pulseaudio-bluetooth
 has_intel_integrated_gpu: true
+nfs_client_package: nfs-utils
