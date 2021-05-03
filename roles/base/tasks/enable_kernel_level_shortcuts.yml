@@ -1,8 +1,0 @@
-- name: set kernel.sysrq = 1 to enable all shortcuts
-  sysctl:
-    name: kernel.sysrq
-    value: 1
-    sysctl_file: /usr/lib/sysctl.d/50-default.conf
-    state: present
-    reload: true
-    sysctl_set: true
