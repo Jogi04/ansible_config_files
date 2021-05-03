@@ -1,14 +1,13 @@
 - name: include workstation tasks
   include_tasks: "{{ item }}"
   loop:
-    #- bluetooth_setup.yml
-    #- audio_setup.yml
     #- gpu_drivers_setup.yml
     #- kde_plasma_setup.yml
     #- sddm_configuration.yml
+    #- bluetooth_setup.yml
+    #- audio_setup.yml
     #- printer_setup.yml
     #- packages.yml
-    #- kde_autostart_programs_setup.yml
     #- zsh_installation.yml
     #- pentesting_setup.yml
     #- aur_packages.yml
