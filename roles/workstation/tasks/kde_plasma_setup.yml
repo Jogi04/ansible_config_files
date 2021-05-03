@@ -6,13 +6,10 @@
     - xorg-server
     - xorg-xrandr
 
-- name: install sddm and sddm-kcm (for configuration from plasma-settings)
+- name: install sddm
   package:
-    name: '{{ item }}'
+    name: sddm
     state: latest
-  loop:
-    - sddm
-    - sddm-kcm
 
 - name: enable sddm
   systemd:
@@ -38,6 +35,7 @@
     - plasma-thunderbolt    # thunderbolt applet
     - kscreen               # screen configuration applet
     - print-manager         # printer managing applet
+    - sddm-kcm              # sddm configuration applet
 
 - name: install latte-dock
   package:
