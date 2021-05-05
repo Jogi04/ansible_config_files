@@ -19,47 +19,34 @@
     dest: /home/jogi/.zsh-themes/gnzh/gnzh.zsh-theme
 
 
-- name: create zsh-plugins directory
-  file:
-    path: /home/jogi/.zsh-plugins
-    state: directory
+- name: install zsh-autosuggestions
+  package:
+    name: zsh-autosuggestions
+    state: latest
 
-- name: create zsh-autosuggestions directory
-  file:
-    path: /home/jogi/.zsh-plugins/zsh-autosuggestions/
-    state: directory
+- name: install zsh-completions
+  package:
+    name: zsh-completions
+    state: latest
 
-- name: download zsh autosuggestions plugin
-  git:
-    repo: https://github.com/zsh-users/zsh-autosuggestions.git
-    dest: /home/jogi/.zsh-plugins/zsh-autosuggestions
-
-- name: download zsh completion plugin
-  git:
-    repo: https://github.com/zsh-users/zsh-completions.git
-    dest: /home/jogi/.zsh-plugins/zsh-completions/
-
-- name: download zsh-syntax-highlighting plugin
-  git:
-    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-    dest: /home/jogi/.zsh-plugins/zsh-syntax-highlighting
+- name: install zsh-syntax-highlighting
+  package:
+    name: zsh-syntax-highlighting
+    state: latest
 
 - name: create .zshrc from template
   template:
     src: zsh/.zshrc.j2
     dest: /home/jogi/.zshrc
 
-- name: change ownership of created directories to jogi
+- name: change ownership of .zsh-themes directory to jogi
   file:
-    path: '{{ item }}'
+    path: /home/jogi/.zsh-themes/
     owner: jogi
     group: jogi
     mode: '0755'
     state: directory
     recurse: yes
-  loop:
-    - /home/jogi/.zsh-plugins/
-    - /home/jogi/.zsh-themes/
 
 - name: change ownership of .zshrc to jogi
   file:
