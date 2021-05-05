@@ -10,6 +10,12 @@
     #- packages.yml
     #- zsh_installation.yml
     #- pentesting_setup.yml
-    #- aur_packages.yml
+
+- include_tasks: aur_packages.yml
+  when: ansible_distribution == 'Archlinux'
+
+- name: include other workstation tasks
+  include_tasks: '{{ item }}'
+  loop:
     #- nfs_client_setup.yml
     #- grub_configuration.yml
