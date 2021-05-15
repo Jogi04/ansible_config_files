@@ -14,3 +14,4 @@
     - tar
     - ethtool
     - lshw
+    - man
