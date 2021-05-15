@@ -14,4 +14,4 @@
     - tar
     - ethtool
     - lshw
-    - man
+    - man-db
