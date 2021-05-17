@@ -1,6 +1,0 @@
-hostname:
-cron_package: cron
-mysql_root_password:
-php_version: 7.4
-nextcloud_version: 21.0.1
-domain_name: nc.test.de

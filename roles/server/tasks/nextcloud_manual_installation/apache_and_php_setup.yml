@@ -50,17 +50,17 @@
     dest: /var/www/
     remote_src: true
 
-- name: rename nextcloud root directory to {{ domain_name }}
-  command: mv /var/www/nextcloud /var/www/{{ domain_name }}
+- name: rename nextcloud root directory to {{ nextcloud_domain_name }}
+  command: mv /var/www/nextcloud /var/www/{{ nextcloud_domain_name }}
 
 - name: remove zip archive
   file:
     path: /var/www/nextcloud-{{ nextcloud_version }}.zip
     state: absent
 
-- name: change owner and group of /var/www/{{ domain_name }}
+- name: change owner and group of /var/www/{{ nextcloud_domain_name }}
   file:
-    path: /var/www/{{ domain_name }}
+    path: /var/www/{{ nextcloud_domain_name }}
     owner: www-data
     group: www-data
     recurse: true
@@ -71,10 +71,10 @@
 - name: create apache config file for nextcloud site
   template:
     src: apache/nextcloud.conf.j2
-    dest: /etc/apache2/sites-available/{{ domain_name }}.conf
+    dest: /etc/apache2/sites-available/{{ nextcloud_domain_name }}.conf
 
 - name: enable newly created config file
-  command: a2ensite {{ domain_name }}
+  command: a2ensite {{ nextcloud_domain_name }}
 
 - name: enable required apache mods
   command: a2enmod dir env headers mime rewrite ssl
@@ -94,7 +94,7 @@
     - python3-certbot-apache
 
 - name: obtain ssl certificate
-  command: certbot --apache --domain {{ domain_name }} --redirect --agree-tos --register-unsafely-without-email
+  command: certbot --apache --domain {{ nextcloud_domain_name }} --redirect --agree-tos --register-unsafely-without-email
 
 - name: allow port 80
   ufw:
