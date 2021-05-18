@@ -5,6 +5,7 @@
   loop:
     - {url: https://aur.archlinux.org/spotify.git, dest: /opt/spotify/}
     - {url: https://aur.archlinux.org/downgrade.git, dest: /opt/downgrade/}
+    - {url: https://aur.archlinux.org/virtualbox-ext-oracle.git, dest: /opt/virtualbox-ext-oracle}
     - {url: https://github.com/ventoy/Ventoy.git, dest: /opt/ventoy/}           # added although it's technically not an aur package
 
 - name: change ownership of package directory temporarily to ansible
@@ -17,6 +18,7 @@
   loop:
     - /opt/spotify
     - /opt/downgrade
+    - /opt/virtualbox-ext-oracle
 
 - name: build and install
   become_user: ansible
@@ -26,6 +28,7 @@
   loop:
     - /opt/spotify
     - /opt/downgrade
+    - /opt/virtualbox-ext-oracle
 
 - name: change ownership of package directory permanently to jogi
   file:
@@ -37,3 +40,4 @@
   loop:
     - /opt/spotify
     - /opt/downgrade
+    - /opt/virtualbox-ext-oracle
