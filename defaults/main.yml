@@ -20,3 +20,4 @@ cron_package: cronie
 pulseaudio_bluetooth_package: pulseaudio-bluetooth
 has_intel_integrated_gpu: true
 nfs_client_package: nfs-utils
+is_laptop: false

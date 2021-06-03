@@ -1,0 +1,19 @@
+- name: install tlp
+  package:
+    name: tlp
+    state: latest
+
+- name: enable tlp
+  systemd:
+    name: tlp
+    enabled: true
+
+- name: mask systemd-rfkill.service
+  systemd:
+    name: systemd-rfkill.service
+    masked: true
+
+- name: mask systemd-rfkill.socket
+  systemd:
+    name: systemd-rfkill.socket
+    masked: true
