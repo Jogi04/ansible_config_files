@@ -7,6 +7,8 @@
     - {url: https://aur.archlinux.org/downgrade.git, dest: /opt/downgrade/}
     - {url: https://aur.archlinux.org/virtualbox-ext-oracle.git, dest: /opt/virtualbox-ext-oracle}
     - {url: https://aur.archlinux.org/ventoy-bin.git, dest: /opt/ventoy/}
+    - {url: https://aur.archlinux.org/optimus-manager.git, dest: /opt/optimus-manager/}
+    - {url: https://aur.archlinux.org/optimus-manager-qt.git, dest: /opt/optimus-manager-qt/}
 
 - name: change ownership of package directory temporarily to ansible
   file:
@@ -20,6 +22,8 @@
     - /opt/downgrade
     - /opt/virtualbox-ext-oracle
     - /opt/ventoy
+    - /opt/optimus-manager
+    - /opt/optimus-manager-qt
 
 - name: build and install
   become_user: ansible
@@ -31,6 +35,8 @@
     - /opt/downgrade
     - /opt/virtualbox-ext-oracle
     - /opt/ventoy
+    - /opt/optimus-manager
+    - /opt/optimus-manager-qt
 
 - name: change ownership of package directory permanently to jogi
   file:
@@ -44,3 +50,5 @@
     - /opt/downgrade
     - /opt/virtualbox-ext-oracle
     - /opt/ventoy
+    - /opt/optimus-manager
+    - /opt/optimus-manager-qt
