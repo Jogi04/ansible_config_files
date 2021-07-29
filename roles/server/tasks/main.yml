@@ -2,15 +2,14 @@
   include_tasks: "{{ item }}"
   loop:
     - nextcloud_snap_installation/nextcloud_snap_installation.yml
-  when: is_nextcloud_instance is defined and is_nextcloud_instance == true
+  when: instance_type is defined and instance_type == 'nextcloud'
 
 - name: include nfs server tasks if it's a nfs server
   include_tasks: '{{ item }}'
   loop:
-    #- nfs_server_setup.yml
+    - nfs_server_setup.yml
   when: is_nfs_server is defined and is_nfs_server == true
 
-- name: include server tasks
-  include_tasks: '{{ item }}'
-  loop:
-    #- auto_updates.yml
+- name: include unattended upgrades
+  include_tasks: unattended_upgrades.yml
+  when: unattended_upgrades is defined and unattended_upgrades == true and ansible_os_family == 'Debian'
