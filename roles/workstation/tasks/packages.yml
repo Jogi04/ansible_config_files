@@ -6,6 +6,7 @@
     # terminal utils
     - speedtest-cli
     - nmap
+    - openvpn
     # development utils
     - ansible
     - openscad
