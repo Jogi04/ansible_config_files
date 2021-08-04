@@ -6,7 +6,7 @@
     - sddm_configuration.yml
     - audio_setup.yml
     - printer_setup.yml
-    - packages.yml
+    #- packages.yml
     - zsh_installation.yml
     - pentesting_setup.yml
 
