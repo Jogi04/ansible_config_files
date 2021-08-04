@@ -12,6 +12,4 @@
     - htop
     - unzip
     - tar
-    - ethtool
-    - lshw
     - man-db
