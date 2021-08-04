@@ -3,6 +3,7 @@ hostname:
 is_internet_facing:
 
 # server role
+instance_type:
 
 # workstation role
 pulseaudio_bluetooth_package: pulseaudio-bluetooth
