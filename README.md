@@ -1,4 +1,4 @@
-# Ansible
+# Description
 This repository consists of personal Ansible playbooks for configuring servers and workstations.
 
 # Requirements
