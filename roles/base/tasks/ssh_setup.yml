@@ -1,7 +1,17 @@
-- name: install ssh
+- name: install ssh for Debian-based systems
   package:
-    name: '{{ ssh_package }}'
+    name: '{{ item }}'
     state: latest
+  loop:
+    - openssh-client
+    - openssh-server
+  when: ansible_os_family == 'Debian'
+
+- name: install ssh for Arch-based systems
+  package:
+    name: openssh
+    state: latest
+  when: ansible_os_family == 'Archlinux'
 
 - name: start and enable openssh
   systemd:
