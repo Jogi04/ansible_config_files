@@ -1,6 +1,11 @@
-- name: install nfs client
+- name: install nfs client on Debian-based systems
   package:
-    name: '{{ nfs_client_package }}'
+    name: nfs-common
+    state: latest
+
+- name: install nfs package on Arch-based systems
+  package:
+    name: nfs-utils
     state: latest
 
 - name: install autofs
