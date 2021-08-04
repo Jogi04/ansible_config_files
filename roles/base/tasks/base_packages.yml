@@ -14,3 +14,11 @@
     - tar
     - man-db
 
+- name: install python and pip package on Arch-based systems
+  package:
+    name: '{{ item }}'
+    state: latest
+  loop:
+    - python
+    - python-pip
+  when: ansible_os_family == 'Debian'
