@@ -4,8 +4,8 @@ This repository consists of personal Ansible playbooks for configuring servers a
 # Requirements
 - Ansible package is installed locally
 - user "ansible" is present on the remote host(s)
-- remote user "ansible" has root privileges without entering a password
-- public key is present on the remote host(s)
+- Remote user "ansible" has root privileges without entering a password
+- Public key is present on the remote host(s)
 
 # Usage
 1. Add remote host(s) to inventory file and create <remote_ip>.yml file in host_vars and set the variables for the host(s).
