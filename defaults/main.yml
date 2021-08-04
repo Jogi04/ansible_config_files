@@ -3,7 +3,7 @@ hostname:
 is_internet_facing:
 
 # server role
-instance_type: nextcloud
+instance_type:
 mysql_root_password:
 php_version: 7.4
 nextcloud_version:
