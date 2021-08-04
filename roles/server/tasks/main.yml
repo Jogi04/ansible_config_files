@@ -1,3 +1,7 @@
 - name: include unattended upgrades
   include_tasks: unattended_upgrades.yml
   when: unattended_upgrades is defined and unattended_upgrades == true and ansible_os_family == 'Debian'
+
+- name: include nextcloud installation
+  include_tasks: nextcloud_snap_installation/nextcloud_snap_installation.yml
+  when: instance_type is defined and instance_type == 'nextcloud'
