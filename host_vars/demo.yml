@@ -1,0 +1,9 @@
+# base role
+hostname: demo
+is_internet_facing: false
+
+# workstation role
+primary_gpu: nvidia
+integrated_gpu: intel
+bluetooth: true
+laptop: true
