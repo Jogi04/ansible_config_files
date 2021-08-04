@@ -3,7 +3,7 @@ This repository consists of personal Ansible playbooks for configuring servers a
 
 # Requirements
 - Ansible package is installed locally
-- user "ansible" is present on the remote host(s)
+- User "ansible" is present on the remote host(s)
 - Remote user "ansible" has root privileges without entering a password
 - Public key is present on the remote host(s)
 
