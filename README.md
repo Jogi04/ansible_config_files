@@ -1,5 +1,5 @@
 # Ansible
-This repo consists of personal Ansible playbooks for configuring servers and workstations.
+This repository consists of personal Ansible playbooks for configuring servers and workstations.
 
 # Requirements
 - Ansible package is installed locally
