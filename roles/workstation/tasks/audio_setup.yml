@@ -2,8 +2,3 @@
   package:
     name: pulseaudio
     state: latest
-
-- name: install pulseaudio bluetooth package
-  package:
-    name: '{{ pulseaudio_bluetooth_package }}'
-    state: latest
