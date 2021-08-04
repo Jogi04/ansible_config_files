@@ -1,12 +1,12 @@
 # base role
 hostname:
-is_internet_facing:
+is_internet_facing: [true, false]
 
 # server role
-instance_type:
+instance_type: [nextcloud]
 
 # workstation role
-pulseaudio_bluetooth_package: pulseaudio-bluetooth
-has_intel_integrated_gpu: true
-nfs_client_package: nfs-utils
-is_laptop: false
+primary_gpu: [nvidia]
+integrated_gpu: [intel]
+bluetooth: [true, false]
+laptop: [true, false]
