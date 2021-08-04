@@ -3,15 +3,6 @@ hostname:
 is_internet_facing:
 
 # server role
-instance_type:
-mysql_root_password:
-php_version: 7.4
-nextcloud_version:
-nextcloud_admin_username:
-nextcloud_admin_password:
-nextcloud_domain_name:
-is_nfs_server: false
-unattended_upgrades: true
 
 # workstation role
 pulseaudio_bluetooth_package: pulseaudio-bluetooth
