@@ -1,10 +1,17 @@
-- name: install bluetooth and pulseaudio bluetooth support
+- name: install bluetooth driver
   package:
-    name: '{{ item }}'
+    name: bluez
     state: latest
-  loop:
-    - bluez
-    - '{{ pulseaudio_bluetooth_package }}'
+
+- name: install pulseaudio bluetooth support for Debian-based systems
+  package:
+    name: pulseaudio-module-bluetooth
+    state: latest
+
+- name: install pulseaudio bluetooth support for Arch-based systems
+  package:
+    name: pulseaudio-bluetooth
+    state: latest
 
 - name: install kde bluetooth applet
   package:

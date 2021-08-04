@@ -1,15 +1,17 @@
 - name: include workstation tasks
   include_tasks: "{{ item }}"
   loop:
-    #- gpu_drivers_setup.yml
-    #- kde_plasma_setup.yml
-    #- sddm_configuration.yml
-    #- bluetooth_setup.yml
-    #- audio_setup.yml
-    #- printer_setup.yml
-    #- packages.yml
-    #- zsh_installation.yml
-    #- pentesting_setup.yml
+    - gpu_drivers_setup.yml
+    - kde_plasma_setup.yml
+    - sddm_configuration.yml
+    - audio_setup.yml
+    - printer_setup.yml
+    - packages.yml
+    - zsh_installation.yml
+    - pentesting_setup.yml
+
+- include_tasks: bluetooth_setup.yml
+  when: bluetooth is defined and bluetooth == true
 
 - include_tasks: aur_packages.yml
   when: ansible_distribution == 'Archlinux'
@@ -20,5 +22,5 @@
 - name: include other workstation tasks
   include_tasks: '{{ item }}'
   loop:
-    #- nfs_client_setup.yml
-    #- grub_configuration.yml
+    - nfs_client_setup.yml
+    - grub_configuration.yml
