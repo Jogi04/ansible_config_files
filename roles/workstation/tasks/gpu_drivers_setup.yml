@@ -7,9 +7,10 @@
     - nvidia-utils
     - nvidia-settings
     - nvidia-prime
+  when: primary_gpu is defined and primary_gpu == 'nvidia'
 
 - name: install intel integrated gpu driver
   package:
     name: xf86-video-intel
     state: latest
-  when: has_intel_integrated_gpu is defined and has_intel_integrated_gpu == true
+  when: integrated_gpu is defined and integrated_gpu == 'intel'
