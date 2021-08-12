@@ -14,20 +14,33 @@
    default: allow
    direction: outgoing
 
-- name: limit port 22 from LAN if it doesn't need to be accessed from the Internet
+- name: limit port 22 if it is a ssh server
   ufw:
     rule: limit
     port: 22
     proto: tcp
-    src: '{{ ansible_default_ipv4["network"] }}/24'
-  when: is_internet_facing is defined and is_internet_facing == false
+  when: is_ssh_server is defined and is_ssh_server == true
 
-- name: limit port 22 from anywhere if it needs to be accessed from the Internet
+- name: allow port 53 for DNS requests if it is a DNS server
   ufw:
-    rule: limit
-    port: 22
+    rule: allow
+    port: 53
+    proto: any
+  when: is_dns_server is defined and is_dns_server == true
+
+- name: allow port 80 if it is a web server
+  ufw:
+    rule: allow
+    port: 80
     proto: tcp
-  when: is_internet_facing is defined and is_internet_facing == true
+  when: is_http_server is defined and is_http_server == true
+
+- name: allow port 443 if it is a web server
+  ufw:
+    rule: allow
+    port: 443
+    proto: tcp
+  when: is_https_server is defined and is_https_server == true
 
 - name: enable ufw
   ufw:

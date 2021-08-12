@@ -1,6 +1,9 @@
 # base role
 hostname: demo
-is_internet_facing: false
+is_ssh_server: true
+is_dns_server: false
+is_http_server: true
+is_https_server: true
 
 # workstation role
 primary_gpu: nvidia

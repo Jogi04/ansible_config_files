@@ -1,6 +1,9 @@
 # base role
 hostname:
-is_internet_facing: [true, false]
+is_ssh_server: [true, false]
+is_dns_server: [true, false]
+is_http_server: [true, false]
+is_https_server: [true, false]
 
 # server role
 instance_type: [nextcloud]
