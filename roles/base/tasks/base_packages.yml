@@ -21,4 +21,13 @@
   loop:
     - python
     - python-pip
+  when: ansible_os_family == 'Archlinux'
+
+- name: install python and pip package on Debian-based systems
+  package:
+    name: '{{ item }}'
+    state: latest
+  loop:
+    - python3
+    - python3-pip
   when: ansible_os_family == 'Debian'
