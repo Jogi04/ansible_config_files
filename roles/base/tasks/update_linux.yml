@@ -1,16 +1,16 @@
-- name: update Arch-based systems, equivalent to 'pacman -Syu'
+- name: update Arch-based systems
   pacman:
     update_cache: true
     upgrade: true
   when: ansible_os_family == 'Archlinux'
 
-- name: udpate Debian-based systems, equivalent to 'apt update; apt upgrade'
+- name: udpate Debian-based systems
   apt:
     update_cache: true
     upgrade: true
   when: ansible_os_family == 'Debian'
 
-- name: udpate RedHat-based systems, equivalent to 'yum update; yum upgrade'
+- name: udpate RedHat-based systems
   yum:
     update_cache: true
     name: '*'
