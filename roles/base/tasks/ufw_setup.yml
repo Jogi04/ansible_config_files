@@ -42,6 +42,13 @@
     proto: tcp
   when: is_https_server is defined and is_https_server == true
 
+- name: allow port 1194 if it is a vpn server
+  ufw:
+    rule: allow
+    port: 1194
+    proto: udp
+  when: is_vpn_server is defined and is_vpn_server == true
+
 - name: enable ufw
   ufw:
     state: enabled
