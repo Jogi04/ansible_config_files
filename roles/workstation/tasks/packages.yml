@@ -17,6 +17,7 @@
     - wireshark
     # desktop utils
     - konsole
+    - networkmanager-openvpn
     - firefox
     - vlc
     - gwenview
