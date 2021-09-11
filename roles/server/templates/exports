@@ -10,4 +10,4 @@
 #  /srv/nfs4/home   *(rw,sync,sec=krb5i,nohide)
 #
 # Use `exportfs -arv` to reload.
-/mnt/data 10.0.0.0/8(rw,sync,no_subtree_check)
+/mnt/drive/data 10.0.0.0/8(rw,sync,no_subtree_check)
