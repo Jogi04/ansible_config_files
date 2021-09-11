@@ -1,3 +1,8 @@
+- name: install snap
+  apt:
+    name: snapd
+    state: latest
+
 - name: install nextcloud from snap
   snap:
     name: nextcloud
