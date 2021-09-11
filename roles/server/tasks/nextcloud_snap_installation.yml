@@ -1,0 +1,4 @@
+- name: install nextcloud from snap
+  snap:
+    name: nextcloud
+    state: present
