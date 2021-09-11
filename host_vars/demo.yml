@@ -1,5 +1,4 @@
 # base role
-hostname: demo
 is_ssh_server: true
 is_dns_server: false
 is_http_server: true

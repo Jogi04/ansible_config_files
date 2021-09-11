@@ -1,5 +1,4 @@
 # base + server role
-hostname: NASbackup
 is_ssh_server: true
 is_dns_server: false
 is_http_server: false

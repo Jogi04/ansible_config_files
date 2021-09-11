@@ -1,5 +1,4 @@
 # base + server role
-hostname:
 is_ssh_server: [true, false]
 is_dns_server: [true, false]
 is_http_server: [true, false]
