@@ -1,6 +1,6 @@
 #!/bin/bash
 
-useradd -m ansible
+useradd -m -s /bin/bash ansible
 passwd ansible
 touch /etc/sudoers.d/ansible
 echo 'ansible ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/ansible
