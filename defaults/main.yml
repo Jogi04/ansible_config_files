@@ -1,13 +1,12 @@
-# base role
+# base + server role
 hostname:
 is_ssh_server: [true, false]
 is_dns_server: [true, false]
 is_http_server: [true, false]
 is_https_server: [true, false]
 is_vpn_server: [true, false]
-
-# server role
-instance_type: [nextcloud]
+is_nas_server: [true, false]
+is_nextcloud_server: [true, false]
 
 # workstation role
 primary_gpu: [nvidia]

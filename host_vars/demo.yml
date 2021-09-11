@@ -5,6 +5,7 @@ is_dns_server: false
 is_http_server: true
 is_https_server: true
 is_vpn_server: false
+is_nas_server: false
 
 # workstation role
 primary_gpu: nvidia

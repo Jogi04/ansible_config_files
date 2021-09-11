@@ -1,0 +1,17 @@
+- name: install nfs server package
+  package:
+    name: nfs-kernel-server
+    state: latest
+
+- name: copy exports to /etc/exports
+  template:
+    src: exports
+    dest: /etc/exports
+
+- name: reload nfs exports
+  command: exportfs -a
+
+- name: restart nfs server service
+  systemd:
+    name: nfs-kernel-server
+    state: restarted

@@ -49,6 +49,13 @@
     proto: udp
   when: is_vpn_server is defined and is_vpn_server == true
 
+- name: allow port 2049 if it is a nas server
+  ufw:
+    rule: allow
+    port: 2049
+    proto: tcp
+  when: is_nas_server is defined and is_nas_server == true
+
 - name: enable ufw
   ufw:
     state: enabled
