@@ -10,6 +10,6 @@ systemctl start sshd
 systemctl enable sshd
 
 mkdir /home/ansible/.ssh
-sftp jogi@10.0.0.100:/home/jogi/.ssh/ansible.pub > /home/ansible/.ssh/.authorized_keys
+ssh jogi@10.0.0.100 "cat/home/jogi/.ssh/ansible.pub" > /home/ansible/.ssh/.authorized_keys
 chmod 744 -R /home/ansible/.ssh/
 chown -R ansible:ansible /home/ansible/.ssh/
