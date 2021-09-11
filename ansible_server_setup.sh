@@ -5,7 +5,7 @@ passwd ansible
 touch /etc/sudoers.d/ansible
 echo 'ansible ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/ansible
 
-apt install openssh-server
+apt install openssh-server -y
 systemctl start sshd
 systemctl enable sshd
 mkdir /home/ansible/.ssh
