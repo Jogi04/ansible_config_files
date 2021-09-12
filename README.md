@@ -16,7 +16,7 @@ sudo ./home/jogi/ansible_server_setup.sh
 ## Usage
 ### Requirements
 Add host ip to inventory file and create <host_ip>.yml file in host_vars and set the variables for the host.
----
+-----
 ## Base Role
 ```bash
 ansible-playbook main.yml --tags base
