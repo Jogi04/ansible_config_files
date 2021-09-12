@@ -17,3 +17,9 @@
   tags: workstation
   roles:
     - workstation
+
+- hosts: arch_install
+  become: true
+  tags: arch_install
+  roles:
+    - arch_install

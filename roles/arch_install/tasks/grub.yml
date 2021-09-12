@@ -1,0 +1,16 @@
+- name: download grub and efibootmgr
+  command: pacstrap /mnt grub efibootmgr --noconfirm --needed
+
+- name: install intel-ucode if intel processor
+  command: pacstrap /mnt intel-ucode --noconfirm
+  when: '"Intel" in ansible_processor[1]'
+
+- name: install amd-ucode if amd processor
+  command: pacstrap /mnt amd-ucode --noconfirm
+  when: '"AMD" in ansible_processor[1]'
+
+- name: install grub to drive
+  command: arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+
+- name: generate grub config
+  command: arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg

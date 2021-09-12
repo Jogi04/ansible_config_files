@@ -1,0 +1,41 @@
+- name: Abort if the host is not booted from the Arch install media
+  fail:
+    msg: "This host is not booted from the Arch install media!"
+  when: ansible_nodename != 'archiso'
+
+- name: Synchronize clock via NTP
+  command: timedatectl set-ntp true
+
+- include_tasks: partitions_uefi.yml
+  when: encrypted_home is defined and encrypted_home == false and is_nvme_drive is defined and nvme == false
+
+- include_tasks: partitions_uefi_nvme.yml
+  when: encrypted_home is defined and encrypted_home == false and is_nvme_drive is defined and nmve == true
+
+- include_tasks: partitions_uefi_encrypted.yml
+  when: encrypted_home is defined and encrypted_home == true and is_nvme_drive is defined and nvme == false
+
+- include_tasks: partitions_uefi_encrypted_nvme.yml
+  when: encrypted_home is defined and encrypted_home == true and is_nvme_drive is defined and nvme == true
+
+- include_tasks: install_base.yml
+
+- include_tasks: fstab_generation.yml
+
+- include_tasks: crypttab_generation.yml
+  when: encrypted_home is defined and encrypted_home == true and is_nvme_drive is defined and nvme == false
+
+- include_tasks: crypttab_generation_nvme.yml
+  when: encrypted_home is defined and encrypted_home == true and is_nvme_drive is defined and nvme == true
+
+- include_tasks: set_keyboard_layout.yml
+
+- include_tasks: root_password.yml
+
+- include_tasks: grub.yml
+
+- include_tasks: network_setup.yml
+
+- include_tasks: user_setup.yml
+
+- reboot:

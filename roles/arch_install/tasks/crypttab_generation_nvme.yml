@@ -1,0 +1,2 @@
+- name: generate crypttab
+  shell: echo "home           {{ install_drive }}p3                                    none" >> /mnt/etc/crypttab

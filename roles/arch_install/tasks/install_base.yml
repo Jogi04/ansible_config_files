@@ -1,0 +1,12 @@
+- name: install base packages to new system
+  command: pacstrap /mnt {{ item }}
+  loop:
+    - base
+    - base-devel
+    - linux
+    - linux-headers
+    - linux-lts
+    - linux-lts-headers
+    - linux-firmware
+    - nano
+    - openssh

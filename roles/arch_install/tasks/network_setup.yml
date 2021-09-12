@@ -1,0 +1,5 @@
+- name: install Networkmanager
+  command: pacstrap /mnt networkmanager --noconfirm --needed
+
+- name: enable Networkmanager
+  command: arch-chroot /mnt systemctl enable NetworkManager

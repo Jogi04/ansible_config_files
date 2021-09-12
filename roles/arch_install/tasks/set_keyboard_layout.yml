@@ -1,0 +1,4 @@
+- name: copy keymap template
+  template:
+    src: vconsole.conf.j2
+    dest: /mnt/etc/vconsole.conf

@@ -1,0 +1,85 @@
+# partition creation
+- name: destroy existing mbr or gpt structures on {{ install_drive }}
+  command: sgdisk -Z {{ install_drive }}
+
+- name: new gpt label at 2048 alignment
+  command: sgdisk -a 2048 -o {{ install_drive }}
+
+- name: create ESP partition
+  command: sgdisk -n 1:0:+1G {{ install_drive }}
+
+- name: create root partition
+  command: sgdisk -n 2:0:+{{ root_partition_size }} {{ install_drive }}
+
+- name: create home partition
+  command: sgdisk -n 3:0:0 {{ install_drive }}
+
+- name: set ESP partition type to EFI System Partition
+  command: sgdisk -t 1:ef00 {{ install_drive }}
+
+- name: set root partition type to ext4
+  command: sgdisk -t 2:8300 {{ install_drive }}
+
+- name: create luks container on home partition
+  luks_device:
+    device: '{{ install_drive }}3'
+    state: present
+    passphrase: '{{ luks_passphrase }}'
+  no_log: true
+
+- name: open newly created luks container
+  luks_device:
+    device: '{{ install_drive }}3'
+    state: opened
+    name: home
+    passphrase: '{{ luks_passphrase }}'
+  no_log: true
+
+# create filesystems
+- name: create Fat32 filesystem on ESP
+  filesystem:
+    fstype: vfat
+    opts: -F32
+    dev: '{{ install_drive }}1'
+
+- name: create ext4 filesystem on root partition
+  filesystem:
+    fstype: ext4
+    dev: '{{ install_drive }}2'
+
+- name: create ext4 filesystem on home partition
+  filesystem:
+    fstype: ext4
+    dev: /dev/mapper/home
+
+# mount partitions
+- name: mount root partition on /mnt
+  mount:
+    src: '{{ install_drive }}2'
+    path: /mnt
+    fstype: ext4
+    state: mounted
+
+- name: create directory for mounting ESP
+  file:
+    path: /mnt/efi
+    state: directory
+
+- name: mount ESP on /mnt/efi
+  mount:
+    src: '{{ install_drive }}1'
+    path: /mnt/efi
+    fstype: vfat
+    state: mounted
+
+- name: create directory for mounting home
+  file:
+    path: /mnt/home
+    state: directory
+
+- name: mount home partition on /mnt/home
+  mount:
+    src: '/dev/mapper/home'
+    path: /mnt/home
+    fstype: ext4
+    state: mounted
