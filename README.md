@@ -7,7 +7,7 @@ sudo ./ansible_control_host_setup.sh
 ```
 
 ### Server Setup
-Run the following commands on the server as root to set up prerequisites on the server which is intended to be configured:
+Run the following commands on the server to set up prerequisites on the server which is intended to be configured:
 ```bash
 sftp jogi@10.0.0.100:/home/jogi/ansible_config_files/ansible_server_setup.sh ~
 sudo ./home/jogi/ansible_server_setup.sh
