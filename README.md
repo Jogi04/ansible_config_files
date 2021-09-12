@@ -34,3 +34,8 @@ ansible-playbook main.yml --tags server
 ```bash
 ansible-playbook main.yml --tags workstation
 ```
+
+## Arch Installation Role
+```bash
+ansible-playbook main.yml --tags arch_install
+```
