@@ -1,14 +1,25 @@
-# Description
-This repository consists of personal Ansible playbooks for configuring servers and workstations.
+## Setup
 
-# Requirements
-- Ansible package is installed locally
-- User "ansible" is present on the remote host(s)
-- Remote user "ansible" has root privileges without entering a password
-- Public key is present on the remote host(s)
+### Control Host Setup
+Run the following command to set up the Ansible Control Host:
+### `sudo ./ansible_control_host_setup.sh`
 
-# Usage
-1. Add remote host(s) to inventory file and create <remote_ip>.yml file in host_vars and set the variables for the host(s).
-3. Run "ansible-playbook main.yml --tags base" to install base configs.
-4. Run "ansible-playbook main.yml --tags server" to install server configs if remote host is intended to run as a server.
-5. Run "ansible-playbook main.yml --tags workstation" to install workstation configs if remote host is intended to run as a workstation.
+### Server Setup
+Run the following commands on the server as root to set up prerequisites on the server which is intended to be configured:
+```bash
+sftp jogi@10.0.0.100:/home/jogi/ansible_config_files/ansible_server_setup.sh ~
+sudo ./home/jogi/ansible_server_setup.sh
+```
+
+## Usage
+### Requirements
+Add host ip to inventory file and create <host_ip>.yml file in host_vars and set the variables for the host.
+----
+## Base Role
+### `ansible-playbook main.yml --tags base`
+
+## Server Role
+### `ansible-playbook main.yml --tags server`
+
+## Workstation Role
+### `ansible-playbook main.yml --tags workstation`
