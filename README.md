@@ -2,7 +2,9 @@
 
 ### Control Host Setup
 Run the following command to set up the Ansible Control Host:
-### `sudo ./ansible_control_host_setup.sh`
+```bash
+sudo ./ansible_control_host_setup.sh
+```
 
 ### Server Setup
 Run the following commands on the server as root to set up prerequisites on the server which is intended to be configured:
@@ -14,12 +16,18 @@ sudo ./home/jogi/ansible_server_setup.sh
 ## Usage
 ### Requirements
 Add host ip to inventory file and create <host_ip>.yml file in host_vars and set the variables for the host.
-----
+---
 ## Base Role
-### `ansible-playbook main.yml --tags base`
+```bash
+ansible-playbook main.yml --tags base
+```
 
 ## Server Role
-### `ansible-playbook main.yml --tags server`
+```bash
+ansible-playbook main.yml --tags server
+```
 
 ## Workstation Role
-### `ansible-playbook main.yml --tags workstation`
+```bash
+ansible-playbook main.yml --tags workstation
+```
