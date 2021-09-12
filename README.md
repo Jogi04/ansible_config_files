@@ -14,7 +14,6 @@ sudo ./home/jogi/ansible_server_setup.sh
 ```
 ---
 
-
 ## Usage
 
 ### Requirements
@@ -25,17 +24,17 @@ Add host ip to inventory file and create <host_ip>.yml file in host_vars and set
 ansible-playbook main.yml --tags base
 ```
 
-## Server Role
+### Server Role
 ```bash
 ansible-playbook main.yml --tags server
 ```
 
-## Workstation Role
+### Workstation Role
 ```bash
 ansible-playbook main.yml --tags workstation
 ```
 
-## Arch Installation Role
+### Arch Installation Role
 ```bash
 ansible-playbook main.yml --tags arch_install
 ```
