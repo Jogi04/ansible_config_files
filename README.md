@@ -12,7 +12,7 @@ Run the following commands on the server to set up prerequisites on the server w
 sftp jogi@10.0.0.100:/home/jogi/ansible_config_files/ansible_server_setup.sh ~
 sudo ./home/jogi/ansible_server_setup.sh
 ```
-
+---
 ## Usage
 ### Requirements
 Add host ip to inventory file and create <host_ip>.yml file in host_vars and set the variables for the host.
