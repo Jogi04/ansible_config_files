@@ -1,7 +1,11 @@
 ## Setup
 
 ### Control Host Setup
-Run the following command to set up the Ansible Control Host:
+Clone the github repository:
+```bash
+git clone https://github.com/Jogi123/ansible_config_files.git
+```
+Navigate into the root of the repository and run the following command to set up the Ansible Control Host:
 ```bash
 sudo ./ansible_control_host_setup.sh
 ```
@@ -9,8 +13,7 @@ sudo ./ansible_control_host_setup.sh
 ### Server Setup
 Run the following commands on the server to set up prerequisites on the server which is intended to be configured:
 ```bash
-sftp jogi@10.0.0.100:/home/jogi/ansible_config_files/ansible_server_setup.sh ~
-sudo ./home/jogi/ansible_server_setup.sh
+sudo wget https://raw.githubusercontent.com/Jogi123/ansible_config_files/master/ansible_server_setup.sh | bash
 ```
 ---
 
