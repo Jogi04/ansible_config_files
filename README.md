@@ -11,9 +11,11 @@ sudo ./ansible_control_host_setup.sh
 ```
 
 ### Server Setup
-Run the following commands on the server to set up prerequisites on the server which is intended to be configured:
+Download setup script, make it executable and run it as root to set up prerequisites on the server which is intended to be configured:
 ```bash
-sudo wget https://raw.githubusercontent.com/Jogi123/ansible_config_files/master/ansible_server_setup.sh | bash
+wget https://raw.githubusercontent.com/Jogi123/ansible_config_files/master/ansible_server_setup.sh
+chmod +x ansible_server_setup.sh
+sudo ./ansible_server_setup.sh
 ```
 ---
 
