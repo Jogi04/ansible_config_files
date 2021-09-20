@@ -1,14 +1,11 @@
 # base + server role
-is_ssh_server: [true, false]
-is_dns_server: [true, false]
-is_http_server: [true, false]
-is_https_server: [true, false]
-is_vpn_server: [true, false]
-is_nas_server: [true, false]
-is_nextcloud_server: [true, false]
+is_ssh_server: true
+gateway: 10.0.0.1
+netmask: 255.0.0.0
+dns_server: 10.0.0.5
 
 # workstation role
-primary_gpu: [nvidia]
-integrated_gpu: [intel]
-bluetooth: [true, false]
-laptop: [true, false]
+primary_gpu: nvidia
+integrated_gpu: intel
+bluetooth: true
+laptop: true
