@@ -1,0 +1,5 @@
+# base + server role
+is_dns_server: true
+is_http_server: true
+is_vpn_server: true
+static_ip: 10.0.0.5

@@ -1,8 +1,2 @@
 # base + server role
-is_ssh_server: true
-is_dns_server: false
-is_http_server: false
-is_https_server: false
-is_vpn_server: false
-is_nas_server: false
-is_nextcloud_server: false
+static_ip: 10.0.0.102
