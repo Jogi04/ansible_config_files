@@ -6,3 +6,6 @@
 
 - include_tasks: nas_server_setup.yml
   when: is_nas_server is defined and is_nas_server == true
+
+- include_tasks: static_ip.yml
+  when: static_ip is defined

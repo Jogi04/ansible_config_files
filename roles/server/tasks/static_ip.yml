@@ -1,0 +1,9 @@
+- name: Set static ip address by adding block to /etc/network/interfaces
+  template:
+    src: interfaces
+    dest: /etc/network/interfaces
+
+- name: restart networking service to apply changes
+  systemd:
+    name: networking
+    state: restarted
