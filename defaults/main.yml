@@ -9,3 +9,7 @@ primary_gpu: nvidia
 integrated_gpu: intel
 bluetooth: true
 laptop: true
+
+# arch_install role
+install_drive: /dev/nvme0n1
+root_partition_size: 100G

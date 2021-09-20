@@ -16,3 +16,9 @@ primary_gpu: [nvidia]
 integrated_gpu: [intel]
 bluetooth: [true, false]
 laptop: [true, false]
+
+# arch_install role
+install_drive: [<install_drive>]
+root_partition_size: [<size_of_root_partition>]
+luks_passphrase: [<password_for_luks_encryption>]
+root_password: [<root_password>]
