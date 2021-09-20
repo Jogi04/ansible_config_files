@@ -6,7 +6,7 @@
     - sddm_configuration.yml
     - audio_setup.yml
     - printer_setup.yml
-    #- packages.yml
+    - packages.yml
     - zsh_installation.yml
     - pentesting_setup.yml
 
@@ -14,7 +14,7 @@
   when: bluetooth is defined and bluetooth == true
 
 - include_tasks: aur_packages.yml
-  when: ansible_distribution == 'Archlinux'
+  when: ansible_os_family == 'Archlinux'
 
 - include_tasks: energy_saving.yml
   when: laptop is defined and laptop == true

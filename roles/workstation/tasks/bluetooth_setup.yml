@@ -7,11 +7,13 @@
   package:
     name: pulseaudio-module-bluetooth
     state: latest
+  when: ansible_os_family == 'Debian'
 
 - name: install pulseaudio bluetooth support for Arch-based systems
   package:
     name: pulseaudio-bluetooth
     state: latest
+  when: ansible_os_family == 'Archlinux'
 
 - name: install kde bluetooth applet
   package:
