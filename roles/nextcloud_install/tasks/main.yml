@@ -1,1 +1,4 @@
-- include_tasks: nextcloud_snap_installation.yml
+- include_tasks: "{{ item }}"
+  loop:
+    - nextcloud_snap_installation.yml
+    - remove_apps.yml
