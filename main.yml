@@ -23,3 +23,9 @@
   tags: arch_linux_install
   roles:
     - arch_linux_install
+
+- hosts: proxmox_install
+  become: true
+  tags: proxmox_install
+  roles:
+    - proxmox_install

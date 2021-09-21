@@ -22,3 +22,5 @@ install_drive: [<install_drive>]
 root_partition_size: [<size_of_root_partition>]
 luks_passphrase: [<password_for_luks_encryption>]
 root_password: [<root_password>]
+
+# proxmox_install role

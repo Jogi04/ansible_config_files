@@ -13,3 +13,5 @@ laptop: true
 # arch_linux_install role
 install_drive: /dev/nvme0n1
 root_partition_size: 100G
+
+# proxmox_install role
