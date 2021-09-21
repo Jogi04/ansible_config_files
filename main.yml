@@ -18,8 +18,8 @@
   roles:
     - workstation
 
-- hosts: arch_install
+- hosts: arch_linux_install
   become: true
-  tags: arch_install
+  tags: arch_linux_install
   roles:
-    - arch_install
+    - arch_linux_install
