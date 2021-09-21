@@ -9,4 +9,7 @@
 [arch_linux_install]
 
 
+[nextcloud_install]]
+
+
 [proxmox_install]

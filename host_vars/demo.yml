@@ -5,7 +5,6 @@ is_http_server: [true, false]
 is_https_server: [true, false]
 is_vpn_server: [true, false]
 is_nas_server: [true, false]
-is_nextcloud_server: [true, false]
 static_ip: [<ip_address>]
 gateway: [<gateway_ip>]
 netmask: [<subnet_mask>]
@@ -22,5 +21,7 @@ install_drive: [<install_drive>]
 root_partition_size: [<size_of_root_partition>]
 luks_passphrase: [<password_for_luks_encryption>]
 root_password: [<root_password>]
+
+# nextcloud_install role
 
 # proxmox_install role

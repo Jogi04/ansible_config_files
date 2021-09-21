@@ -1,9 +1,6 @@
 - include_tasks: unattended_upgrades.yml
   when: ansible_os_family == 'Debian'
 
-- include_tasks: nextcloud_snap_installation.yml
-  when: is_nextcloud_server is defined and is_nextcloud_server == true
-
 - include_tasks: nas_server_setup.yml
   when: is_nas_server is defined and is_nas_server == true
 

@@ -1,0 +1,1 @@
+- include_tasks: nextcloud_snap_installation.yml

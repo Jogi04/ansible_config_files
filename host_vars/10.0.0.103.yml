@@ -1,5 +1,4 @@
 # base + server role
 is_http_server: true
 is_https_server: true
-is_nextcloud_server: true
 static_ip: 10.0.0.103
