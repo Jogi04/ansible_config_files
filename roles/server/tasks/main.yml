@@ -6,3 +6,6 @@
 
 - include_tasks: static_ip.yml
   when: static_ip is defined
+
+- include_tasks: install_syncthing.yml
+  when: is_syncthing_server is defined and is_syncthing_server == true

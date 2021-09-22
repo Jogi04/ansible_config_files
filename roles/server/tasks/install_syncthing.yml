@@ -1,0 +1,10 @@
+- name: install syncthing package
+  package:
+    name: syncthing
+    state: latest
+
+- name: enable syncthing service for user jogi
+  command: systemctl enable syncthing@jogi.service
+
+- name: start syncthing service for user jogi
+  command: systemctl start syncthing@jogi.service

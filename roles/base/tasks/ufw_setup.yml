@@ -56,6 +56,27 @@
     proto: tcp
   when: is_nas_server is defined and is_nas_server == true
 
+- name: allow port 21027 if it is a syncthing server
+  ufw:
+    rule: allow
+    port: 21027
+    proto: udp
+  when: is_syncthing_server is defined and is_syncthing_server == true
+
+- name: allow port 22000 if it is a syncthing server
+  ufw:
+    rule: allow
+    port: 22000
+    proto: tcp
+  when: is_syncthing_server is defined and is_syncthing_server == true
+
+- name: allow port 22000 if it is a syncthing server
+  ufw:
+    rule: allow
+    port: 22000
+    proto: udp
+  when: is_syncthing_server is defined and is_syncthing_server == true
+
 - name: enable ufw
   ufw:
     state: enabled
