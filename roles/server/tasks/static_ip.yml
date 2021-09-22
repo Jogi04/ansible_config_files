@@ -1,6 +1,6 @@
 - name: Set static ip address by adding block to /etc/network/interfaces
   template:
-    src: interfaces
+    src: interfaces.j2
     dest: /etc/network/interfaces
 
 - name: restart networking service to apply changes
