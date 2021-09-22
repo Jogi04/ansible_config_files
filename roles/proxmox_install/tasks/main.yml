@@ -1,4 +1,3 @@
 - include_tasks: "{{ item }}"
   loop:
-    - vms_config.yml
-    - network_config.yml
+    - remove_subscription_banner.yml
