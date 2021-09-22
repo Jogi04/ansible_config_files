@@ -24,13 +24,13 @@
   roles:
     - arch_linux_install
 
-- hosts: proxmox_install
+- hosts: server:proxmox_install
   become: true
   tags: proxmox_install
   roles:
     - proxmox_install
 
-- hosts: nextcloud_install
+- hosts: server:nextcloud_install
   become: true
   tags: nextcloud_install
   roles:
