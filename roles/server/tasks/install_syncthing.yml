@@ -8,3 +8,6 @@
 
 - name: start syncthing service for user jogi
   command: systemctl start syncthing@jogi.service
+
+- debug:
+    msg: Now you can use ssh port forwarding for connecting to the web interface (ssh -L 9999:localhost:8384 {{static_ip}})
