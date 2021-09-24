@@ -7,6 +7,3 @@
   snap:
     name: nextcloud
     state: present
-
-- name: reboot server to apply nextcloud paths
-  reboot:
