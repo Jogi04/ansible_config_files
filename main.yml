@@ -12,12 +12,16 @@
   tags: server
   roles:
     - server
+  vars_files:
+    - defaults/main.yml
 
 - hosts: workstation
   become: true
   tags: workstation
   roles:
     - workstation
+  vars_files:
+    - defaults/main.yml
 
 - hosts: arch_linux_install
   become: true
@@ -31,6 +35,8 @@
   roles:
     - server
     - proxmox_install
+  vars_files:
+    - defaults/main.yml
 
 - hosts: nextcloud_install
   become: true
@@ -38,3 +44,5 @@
   roles:
     - server
     - nextcloud_install
+  vars_files:
+    - defaults/main.yml
