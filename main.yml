@@ -30,8 +30,9 @@
   roles:
     - proxmox_install
 
-- hosts: server:nextcloud_install
+- hosts: nextcloud_install
   become: true
   tags: nextcloud_install
   roles:
     - nextcloud_install
+    - server
