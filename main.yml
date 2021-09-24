@@ -28,6 +28,8 @@
   tags: arch_linux_install
   roles:
     - arch_linux_install
+  vars_files:
+    - defaults/main.yml
 
 - hosts: proxmox_install
   become: true
