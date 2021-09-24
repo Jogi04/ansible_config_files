@@ -33,5 +33,5 @@
   become: true
   tags: nextcloud_install
   roles:
-    - nextcloud_install
     - server
+    - nextcloud_install
