@@ -5,7 +5,7 @@
   command: /snap/bin/nextcloud.occ config:system:set trusted_domains 2 --value={{ fqdn }}
 
 - debug:
-    msg: Now run "/snap/bin/nextcloud.enable-https lets-encrypt"
+    msg: Now run '/snap/bin/nextcloud.enable-https lets-encrypt'
 
 - debug:
-    msg: Run "/snap/bin/nextcloud.occ user:add jogi" to add user jogi
+    msg: Run '/snap/bin/nextcloud.occ user:add jogi' to add user jogi
