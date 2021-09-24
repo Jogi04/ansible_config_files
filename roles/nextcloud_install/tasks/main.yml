@@ -2,4 +2,4 @@
   loop:
     - nextcloud_snap_installation.yml
     - configure_nextcloud.yml
-    #- remove_apps.yml
+    - remove_apps.yml
