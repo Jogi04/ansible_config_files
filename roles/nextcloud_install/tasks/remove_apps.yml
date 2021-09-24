@@ -1,5 +1,5 @@
 - name: remove unnecessary apps
-  command: nextcloud.occ app:disable "{{ item }}"
+  command: /snap/bin/nextcloud.occ app:disable "{{ item }}"
   loop:
     - dashboard
     - activity
