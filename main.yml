@@ -4,6 +4,8 @@
   become: true
   roles:
     - base
+  vars_files:
+    - defaults/main.yml
 
 - hosts: server
   become: true
