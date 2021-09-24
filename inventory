@@ -7,7 +7,7 @@
 
 [arch_linux_install]
 
-[nextcloud_install]]
+[nextcloud_install]
 10.0.0.103
 
 [proxmox_install]
