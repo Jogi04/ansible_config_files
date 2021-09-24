@@ -4,7 +4,7 @@ iface lo inet loopback
 
 # The primary network interface
 auto {{ ansible_default_ipv4[interface] }}
-iface {{ ansible_default_ipv4[interface] }} inet static
+iface {{ ansible_default_ipv4["interface"] }} inet static
  address {{ static_ip }}
  netmask {{ netmask }}
  gateway {{ gateway }}
