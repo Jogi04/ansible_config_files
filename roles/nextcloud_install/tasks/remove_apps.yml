@@ -1,3 +1,6 @@
 - name: remove unnecessary apps
   command: nextcloud.occ app:disable "{{ item }}"
   loop:
+    - dashboard
+    - activity
+    - photos

@@ -7,3 +7,6 @@
   snap:
     name: nextcloud
     state: present
+
+- name: install nextcloud
+  command: /snap/bin/nextcloud.manual-install root test

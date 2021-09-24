@@ -1,0 +1,5 @@
+- name: add private ip to trusted domains
+  command: /snap/bin/nextcloud.occ config:system:set trusted_domains 1 --value={{ static_ip }}
+
+- name: add fqdn to trusted domains
+  command: /snap/bin/nextcloud.occ config:system:set trusted_domains 2 --value={{ fqdn }}
