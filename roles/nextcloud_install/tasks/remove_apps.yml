@@ -4,3 +4,6 @@
     - dashboard
     - activity
     - photos
+
+- name: enable two factor authentication
+  command: /snap/bin/nextcloud.occ app:enable twofactor_totp
