@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 useradd -m -s /bin/bash ansible
 passwd ansible
 touch /etc/sudoers.d/ansible
