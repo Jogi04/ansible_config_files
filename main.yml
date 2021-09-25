@@ -48,3 +48,12 @@
     - nextcloud_install
   vars_files:
     - defaults/main.yml
+
+- hosts: localhost
+  connection: local
+  become: true
+  tags: control_host
+  roles:
+    - server
+  vars_files:
+    - defaults/main.yml
