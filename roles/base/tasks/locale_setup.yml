@@ -4,11 +4,6 @@
 - name: enable ntp service
   command: timedatectl set-ntp true
 
-- name: copy hosts from template
-  template:
-    src: hosts.j2
-    dest: /etc/hosts
-
 - name: set language using localectl
   command: localectl set-locale LANG=en_US.UTF-8
 
