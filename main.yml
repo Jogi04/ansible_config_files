@@ -54,6 +54,7 @@
   become: true
   tags: control_host
   roles:
+    - base
     - server
   vars_files:
     - defaults/main.yml
