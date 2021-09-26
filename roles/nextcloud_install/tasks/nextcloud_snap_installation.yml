@@ -9,4 +9,4 @@
     state: present
 
 - name: install nextcloud
-  command: /snap/bin/nextcloud.manual-install root test
+  command: /snap/bin/nextcloud.manual-install root {{ nextcloud_root_password }}

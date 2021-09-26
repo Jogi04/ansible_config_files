@@ -49,6 +49,7 @@
     - nextcloud_install
   vars_files:
     - defaults/main.yml
+    - host_vars/paswords.yml
 
 - hosts: localhost
   connection: local
