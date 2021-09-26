@@ -10,6 +10,7 @@ static_ip: [<ip_address>]
 gateway: [<gateway_ip>]
 netmask: [<subnet_mask>]
 dns_server: [<dns_server_ip>]
+nextcloud_root_password: [<nextcloud_root_password>]
 
 # workstation role
 primary_gpu: [nvidia]
@@ -20,8 +21,9 @@ laptop: [true, false]
 # arch_linux_install role
 install_drive: [<install_drive>]
 root_partition_size: [<size_of_root_partition>]
-luks_passphrase: [<password_for_luks_encryption>]
-root_password: [<root_password>]
+arch_luks_password: [<luks_password>]
+arch_root_password: [<root_password>]
+arch_jogi_password: [<jogi_password>]
 
 # nextcloud_install role
 fqdn: [<fully_qualified_domain_name>]
