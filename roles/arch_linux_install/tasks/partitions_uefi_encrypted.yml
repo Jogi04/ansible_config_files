@@ -24,7 +24,7 @@
   luks_device:
     device: '{{ install_drive }}3'
     state: present
-    passphrase: '{{ luks_passphrase }}'
+    passphrase: '{{ arch_luks_password }}'
   no_log: true
 
 - name: open newly created luks container
@@ -32,7 +32,7 @@
     device: '{{ install_drive }}3'
     state: opened
     name: home
-    passphrase: '{{ luks_passphrase }}'
+    passphrase: '{{ arch_luks_password }}'
   no_log: true
 
 # create filesystems

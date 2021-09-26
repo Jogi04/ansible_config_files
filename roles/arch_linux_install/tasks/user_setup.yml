@@ -4,6 +4,14 @@
     groups: wheel
     append: true
 
+- name: set password for jogi
+  shell:
+    cmd: |
+      arch-chroot /mnt /bin/bash <<EOF
+      echo "jogi:{{ arch_jogi_pasword }}" | chpasswd
+      EOF
+  no_log: true
+
 - name: allow wheel group to use sudo
   lineinfile:
     path: /etc/sudoers
