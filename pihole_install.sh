@@ -63,3 +63,4 @@ server:
 EOF
 
 pihole -a -p
+pihole -a setdns 127.0.0.1#5335
