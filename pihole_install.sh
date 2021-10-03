@@ -5,7 +5,7 @@ curl -sSL https://install.pi-hole.net | bash
 pihole -a -g
 
 
-apt install unbound
+apt install unbound -y
 cat << EOF >> /etc/unbound/unbound.conf.d/pi-hole.conf
 server:
     # If no logfile is specified, syslog is used
@@ -62,4 +62,4 @@ server:
     private-address: fe80::/10
 EOF
 
-pihole -r
+pihole -a -p
