@@ -1,4 +1,4 @@
 # base + server role
 is_nas_server: true
 is_syncthing_server: true
-static_ip: 10.0.0.101
+static_ip: 10.0.0.30
