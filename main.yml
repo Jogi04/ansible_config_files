@@ -31,7 +31,7 @@
     - arch_linux_install
   vars_files:
     - defaults/main.yml
-    - host_vars/paswords.yml
+    - host_vars/passwords.yml
 
 - hosts: proxmox_install
   become: true
@@ -50,7 +50,7 @@
     - nextcloud_install
   vars_files:
     - defaults/main.yml
-    - host_vars/paswords.yml
+    - host_vars/passwords.yml
 
 - hosts: localhost
   connection: local
