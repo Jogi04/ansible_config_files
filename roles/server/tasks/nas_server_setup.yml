@@ -20,3 +20,29 @@
   systemd:
     name: nfs-kernel-server
     state: restarted
+
+- name: install samba
+  package:
+    name: samba
+    state: latest
+
+- name: add block to config file
+  blockinfile:
+    path: /etc/samba/smb.conf
+    block: |
+      [public]
+         path = /data/public
+         browsable = yes
+         read only = no
+         guest ok = yes
+
+- name: add block to config file
+  blockinfile:
+    path: /etc/samba/smb.conf
+    block: |
+      [johannes]
+         path = /data/johannes
+         browsable = yes
+         read only = no
+         guest ok = no
+         vaild users = jogi

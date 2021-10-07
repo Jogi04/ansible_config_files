@@ -56,6 +56,13 @@
     proto: tcp
   when: is_nas_server is defined and is_nas_server == true
 
+- name: allow port 445 if it is a nas server
+  ufw:
+    rule: allow
+    port: 445
+    proto: tcp
+  when: is_nas_server is defined and is_nas_server == true
+
 - name: allow port 21027 if it is a syncthing server
   ufw:
     rule: allow
