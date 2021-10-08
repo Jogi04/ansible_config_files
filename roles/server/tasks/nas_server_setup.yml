@@ -74,3 +74,6 @@
 
 - debug:
     msg: Then restart smbd server
+
+- debug:
+    msg: Also change login shell for the new users to /usr/sbin/nologin
