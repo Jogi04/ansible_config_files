@@ -46,3 +46,31 @@
          read only = no
          guest ok = no
          vaild users = jogi
+
+- name: add block to config file
+  blockinfile:
+    path: /etc/samba/smb.conf
+    block: |
+      [dirk]
+         path = /data/family/dirk
+         browsable = yes
+         read only = no
+         guest ok = no
+         vaild users = dirk
+
+- name: add block to config file
+  blockinfile:
+    path: /etc/samba/smb.conf
+    block: |
+      [tine]
+         path = /data/family/tine
+         browsable = yes
+         read only = no
+         guest ok = no
+         vaild users = tine
+
+- debug:
+    msg: Now run 'sudo useradd <username> && sudo smbpasswd -a <username>' to add samba users
+
+- debug:
+    msg: Then restart smbd server
