@@ -63,6 +63,20 @@
     proto: tcp
   when: is_nas_server is defined and is_nas_server == true
 
+- name: allow port 111 if it is a nas server (for showmount)
+  ufw:
+    rule: allow
+    port: 111
+    proto: tcp
+  when: is_nas_server is defined and is_nas_server == true
+
+- name: allow port 42849 if it is a nas server (for showmount)
+  ufw:
+    rule: allow
+    port: 42849
+    proto: tcp
+  when: is_nas_server is defined and is_nas_server == true
+
 - name: allow port 21027 if it is a syncthing server
   ufw:
     rule: allow
