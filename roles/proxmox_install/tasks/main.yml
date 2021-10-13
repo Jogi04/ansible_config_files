@@ -1,3 +1,0 @@
-- include_tasks: "{{ item }}"
-  loop:
-    - remove_subscription_banner.yml

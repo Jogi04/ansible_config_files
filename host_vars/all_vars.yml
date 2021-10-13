@@ -27,5 +27,3 @@ arch_jogi_password: [<jogi_password>]
 
 # nextcloud_install role
 fqdn: [<fully_qualified_domain_name>]
-
-# proxmox_install role

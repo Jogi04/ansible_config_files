@@ -33,15 +33,6 @@
     - defaults/main.yml
     - host_vars/passwords.yml
 
-- hosts: proxmox_install
-  become: true
-  tags: proxmox_install
-  roles:
-    - server
-    - proxmox_install
-  vars_files:
-    - defaults/main.yml
-
 - hosts: nextcloud_install
   become: true
   tags: nextcloud_install
