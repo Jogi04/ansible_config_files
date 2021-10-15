@@ -15,6 +15,7 @@
     - arduino
     - arduino-avr-core
     - wireshark
+    - kdevelop
     # desktop utils
     - konsole
     - networkmanager-openvpn
