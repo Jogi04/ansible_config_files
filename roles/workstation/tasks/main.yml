@@ -9,6 +9,7 @@
     - packages.yml
     - zsh_installation.yml
     - pentesting_setup.yml
+    - flatpak_installation.yml
 
 - include_tasks: bluetooth_setup.yml
   when: bluetooth is defined and bluetooth == true
