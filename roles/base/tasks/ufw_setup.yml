@@ -18,7 +18,8 @@
   ufw:
     rule: limit
     port: 22
-    proto: tcp
+    proto: any
+    from: 10.0.0.0/8
   when: is_ssh_server is defined and is_ssh_server == true
 
 - name: allow port 53 for DNS requests if it is a DNS server
@@ -26,76 +27,76 @@
     rule: allow
     port: 53
     proto: any
+    from: 10.0.0.0/8
   when: is_dns_server is defined and is_dns_server == true
 
 - name: allow port 80 if it is a web server
   ufw:
     rule: allow
     port: 80
-    proto: tcp
+    proto: any
   when: is_http_server is defined and is_http_server == true
+
+- name: allow port 111 if it is a nas server (rpcbind)
+  ufw:
+    rule: allow
+    port: 111
+    proto: any
+    from: 10.0.0.0/8
+  when: is_nas_server is defined and is_nas_server == true
 
 - name: allow port 443 if it is a web server
   ufw:
     rule: allow
     port: 443
-    proto: tcp
+    proto: any
   when: is_https_server is defined and is_https_server == true
+
+- name: allow port 445 if it is a nas server
+  ufw:
+    rule: allow
+    port: 445
+    proto: any
+    from: 10.0.0.0/8
+  when: is_nas_server is defined and is_nas_server == true
 
 - name: allow port 1194 if it is a vpn server
   ufw:
     rule: allow
     port: 1194
-    proto: udp
+    proto: any
   when: is_vpn_server is defined and is_vpn_server == true
 
 - name: allow port 2049 if it is a nas server
   ufw:
     rule: allow
     port: 2049
-    proto: tcp
+    proto: any
+    from: 10.0.0.0/8
   when: is_nas_server is defined and is_nas_server == true
 
-- name: allow port 445 if it is a nas server
+- name: allow port 13025 if it is a nas server (rpcbind.mountd)
   ufw:
     rule: allow
-    port: 445
-    proto: tcp
-  when: is_nas_server is defined and is_nas_server == true
-
-- name: allow port 111 if it is a nas server (for showmount)
-  ufw:
-    rule: allow
-    port: 111
-    proto: tcp
-  when: is_nas_server is defined and is_nas_server == true
-
-- name: allow port 42849 if it is a nas server (for showmount)
-  ufw:
-    rule: allow
-    port: 42849
-    proto: tcp
+    port: 13025
+    proto: any
+    from: 10.0.0.0/8
   when: is_nas_server is defined and is_nas_server == true
 
 - name: allow port 21027 if it is a syncthing server
   ufw:
     rule: allow
     port: 21027
-    proto: udp
+    proto: any
+    from: 10.0.0.0/8
   when: is_syncthing_server is defined and is_syncthing_server == true
 
 - name: allow port 22000 if it is a syncthing server
   ufw:
     rule: allow
     port: 22000
-    proto: tcp
-  when: is_syncthing_server is defined and is_syncthing_server == true
-
-- name: allow port 22000 if it is a syncthing server
-  ufw:
-    rule: allow
-    port: 22000
-    proto: udp
+    proto: any
+    from: 10.0.0.0/8
   when: is_syncthing_server is defined and is_syncthing_server == true
 
 - name: enable ufw
