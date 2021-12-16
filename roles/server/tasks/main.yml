@@ -9,3 +9,6 @@
 
 - include_tasks: install_syncthing.yml
   when: is_syncthing_server is defined and is_syncthing_server == true
+
+- include_tasks: install_plex_server.yml
+  when: is_plex_server is defined and is_plex_server == true

@@ -99,6 +99,14 @@
     from: 10.0.0.0/8
   when: is_syncthing_server is defined and is_syncthing_server == true
 
+- name: allow port 32400 if it is a plex server
+  ufw:
+    rule: allow
+    port: 32400
+    proto: any
+    from: 10.0.0.0/8
+  when: is_plex_server is defined and is_plex_server == true
+
 - name: enable ufw
   ufw:
     state: enabled

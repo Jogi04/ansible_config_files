@@ -1,0 +1,20 @@
+- name: add plex repository key
+  commmand: curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
+
+- name: add plex repository to apt list
+  command: echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
+
+- name: update package repository index
+  apt:
+    update_cache: true
+
+- name: install plex media server package
+  package:
+    name: plexmediaserver
+    state: latest
+
+- name: start and enable plexmediaserver service
+  systemd:
+    name: plexmediaserver
+    state: started
+    enabled: true
