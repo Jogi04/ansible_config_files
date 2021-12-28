@@ -77,5 +77,3 @@
 
 - debug:
     msg: Also change login shell for the new users to /usr/sbin/nologin
-
-#test
