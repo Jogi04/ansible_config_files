@@ -3,11 +3,6 @@
     name: nfs-kernel-server
     state: latest
 
-- name: create export directory
-  file:
-    path: /data
-    state: directory
-
 - name: copy exports to /etc/exports
   template:
     src: exports
