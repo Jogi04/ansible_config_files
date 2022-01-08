@@ -35,6 +35,7 @@
     rule: allow
     port: 80
     proto: any
+    from: 10.0.0.0/8
   when: is_http_server is defined and is_http_server == true
 
 - name: allow port 111 if it is a nas server (rpcbind)
