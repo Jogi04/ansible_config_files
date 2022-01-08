@@ -2,7 +2,7 @@
 
 - hosts: all
   become: true
-  tags: always
+  tags: base
   roles:
     - base
   vars_files:
