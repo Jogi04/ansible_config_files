@@ -7,8 +7,8 @@ touch /etc/sudoers.d/ansible
 echo 'ansible ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/ansible
 
 apt install openssh-server -y
-systemctl start sshd
-systemctl enable sshd
+systemctl start ssh
+systemctl enable ssh
 
 mkdir /home/ansible/.ssh
 cat << EOF >> /home/ansible/.ssh/authorized_keys
