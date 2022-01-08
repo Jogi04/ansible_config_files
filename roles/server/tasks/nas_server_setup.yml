@@ -57,12 +57,34 @@
   blockinfile:
     path: /etc/samba/smb.conf
     block: |
-      [tine]
-         path = /data/family/tine
+      [christine]
+         path = /data/family/christine
          browsable = yes
          read only = no
          guest ok = no
-         vaild users = tine
+         vaild users = christine
+
+- name: add block to config file
+  blockinfile:
+    path: /etc/samba/smb.conf
+    block: |
+      [konstantin]
+         path = /data/family/konstantin
+         browsable = yes
+         read only = no
+         guest ok = no
+         vaild users = konstantin
+
+- name: add block to config file
+  blockinfile:
+    path: /etc/samba/smb.conf
+    block: |
+      [charlotte]
+         path = /data/family/charlotte
+         browsable = yes
+         read only = no
+         guest ok = no
+         vaild users = charlotte
 
 - debug:
     msg: Now run 'sudo useradd <username> && sudo smbpasswd -a <username>' to add samba users
