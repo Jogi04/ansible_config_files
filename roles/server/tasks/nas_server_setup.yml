@@ -30,55 +30,35 @@
          browsable = yes
          read only = no
          guest ok = yes
-
-- name: add block to config file
-  blockinfile:
-    path: /etc/samba/smb.conf
-    block: |
+      
       [johannes]
          path = /pool/data/johannes
          browsable = yes
          read only = no
          guest ok = no
          vaild users = jogi
-
-- name: add block to config file
-  blockinfile:
-    path: /etc/samba/smb.conf
-    block: |
+      
       [dirk]
          path = /pool/data/family/dirk
          browsable = yes
          read only = no
          guest ok = no
          vaild users = dirk
-
-- name: add block to config file
-  blockinfile:
-    path: /etc/samba/smb.conf
-    block: |
+      
       [christine]
          path = /pool/data/family/christine
          browsable = yes
          read only = no
          guest ok = no
          vaild users = christine
-
-- name: add block to config file
-  blockinfile:
-    path: /etc/samba/smb.conf
-    block: |
+      
       [konstantin]
          path = /pool/data/family/konstantin
          browsable = yes
          read only = no
          guest ok = no
          vaild users = konstantin
-
-- name: add block to config file
-  blockinfile:
-    path: /etc/samba/smb.conf
-    block: |
+      
       [charlotte]
          path = /pool/data/family/charlotte
          browsable = yes
