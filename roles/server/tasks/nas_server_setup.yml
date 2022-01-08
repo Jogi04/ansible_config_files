@@ -26,7 +26,7 @@
     path: /etc/samba/smb.conf
     block: |
       [public]
-         path = /data/family/public
+         path = /pool/data/family/public
          browsable = yes
          read only = no
          guest ok = yes
@@ -36,7 +36,7 @@
     path: /etc/samba/smb.conf
     block: |
       [johannes]
-         path = /data/johannes
+         path = /pool/data/johannes
          browsable = yes
          read only = no
          guest ok = no
@@ -47,7 +47,7 @@
     path: /etc/samba/smb.conf
     block: |
       [dirk]
-         path = /data/family/dirk
+         path = /pool/data/family/dirk
          browsable = yes
          read only = no
          guest ok = no
@@ -58,7 +58,7 @@
     path: /etc/samba/smb.conf
     block: |
       [christine]
-         path = /data/family/christine
+         path = /pool/data/family/christine
          browsable = yes
          read only = no
          guest ok = no
@@ -69,7 +69,7 @@
     path: /etc/samba/smb.conf
     block: |
       [konstantin]
-         path = /data/family/konstantin
+         path = /pool/data/family/konstantin
          browsable = yes
          read only = no
          guest ok = no
@@ -80,7 +80,7 @@
     path: /etc/samba/smb.conf
     block: |
       [charlotte]
-         path = /data/family/charlotte
+         path = /pool/data/family/charlotte
          browsable = yes
          read only = no
          guest ok = no
