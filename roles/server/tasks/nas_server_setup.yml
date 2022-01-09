@@ -76,4 +76,4 @@
     msg: Also change login shell for the new users to /usr/sbin/nologin
 
 - debug:
-    msg: When mounting an external drive for storage keep in mind that 5% are reserved for the root user! To change this, run "tune2fs -m 0 <drive>"
+    msg: When mounting an external ext2/3/4 drive for storage keep in mind that 5% are reserved for the root user! To change this, run "tune2fs -m 0 <drive>"
