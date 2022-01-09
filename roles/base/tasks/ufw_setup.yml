@@ -108,6 +108,14 @@
     from: 10.0.0.0/8
   when: is_plex_server is defined and is_plex_server == true
 
+- name: allow port 33333 for a static nfs/rpc mountd port if it is a nas server
+  ufw:
+    rule: allow
+    port: 33333
+    proto: any
+    from: 10.0.0.0/8
+  when: is_nas_server is defined and is_nas_server == true
+
 - name: enable ufw
   ufw:
     state: enabled

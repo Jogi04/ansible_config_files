@@ -3,6 +3,13 @@
     name: nfs-kernel-server
     state: latest
 
+- name: change nfs/rpc to use static port for mountd
+  lineinfile:
+    path: /etc/default/nfs-kernel-server
+    regexp: '^(.*)RPCMOUNTDOPTS(.*)$'
+    line: 'RPCMOUNTDOPTS="--port 33333"'
+    firstmatch: true
+
 - name: copy exports to /etc/exports
   template:
     src: exports
