@@ -12,6 +12,10 @@ gateway: [<gateway_ip>]
 netmask: [<subnet_mask>]
 dns_server: [<dns_server_ip>]
 nextcloud_root_password: [<nextcloud_root_password>]
+zfs_pool_name: [<name_of_zfs_pool>]
+zfs_id_disk_1: [<id_of_zsf_disk_1]
+zfs_id_disk_2: [<id_of_zsf_disk_2]
+zfs_dataset_name: [<name_of_zfs_dataset]
 
 # workstation role
 primary_gpu: [nvidia]

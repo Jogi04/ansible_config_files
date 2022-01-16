@@ -2,3 +2,7 @@
 is_nas_server: true
 is_syncthing_server: true
 static_ip: 10.0.0.30
+zfs_pool_name: pool
+zfs_id_disk_1: ata-ST4000VN008-2DR166_ZDHAFGRH
+zfs_id_disk_2: ata-ST4000VN008-2DR166_ZDHAFGQR
+zfs_dataset_name: data

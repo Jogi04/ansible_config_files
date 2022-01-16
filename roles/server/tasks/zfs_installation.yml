@@ -1,0 +1,22 @@
+- name: enable contrib repository
+  blockinfile:
+    path: /etc/apt/sources.list
+    block: |
+      deb http://deb.debian.org/debian buster-backports main contrib
+      deb-src http://deb.debian.org/debian buster-backports main contrib
+      
+- name: install zfs dkms module package
+  package:
+    name: zfs-dkms
+    state: latest
+
+- name: install zfs package
+  package:
+    name: zfsutils-linux
+    state: latest
+
+- name: create zfs pool
+  commmand: zpool create -f {{ zfs_pool_name }} mirror {{ zfs_id_disk_1 }} {{ zfs_id_disk_2 }}
+
+- name: create dataset
+  command: zfs create {{ zfs_pool_name }}/{{ zfs_dataset_name }}
