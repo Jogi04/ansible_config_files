@@ -20,3 +20,20 @@
 
 - name: create dataset
   command: zfs create {{ zfs_pool_name }}/{{ zfs_dataset_name }}
+
+- name: copy systemd service file for zpool scrub
+  template:
+    src: systemd_zfs_scrub/zfs-scrub@.service
+    dest: /etc/systemd/system/zfs-scrub@.service
+
+- name: copy systemd timer for monthly zpool scrub service
+  template:
+    src: systemd_zfs_scrub/zfs-scrub@.timer
+    dest: /etc/systemd/system/zfs-scrub@.timer
+
+- name: reload systemd daemons
+  systemd:
+    daemon_reload: true
+
+- name: start and enable systemd timer for zpool scrub
+  command: systemctl enable zfs-scrub@{{zfs_pool_name}}.timer --now
