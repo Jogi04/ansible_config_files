@@ -1,6 +1,3 @@
-- include_tasks: unattended_upgrades.yml
-  when: ansible_os_family == 'Debian'
-
 - include_tasks: zfs_installation.yml
   when: is_nas_server is defined and is_nas_server == true
 
