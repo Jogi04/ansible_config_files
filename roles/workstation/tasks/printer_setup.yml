@@ -5,6 +5,7 @@
   loop:
     - cups
     - hplip
+    - system-config-printer
 
 - name: install kde plasma printing applet
   package:
