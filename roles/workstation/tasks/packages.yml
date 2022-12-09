@@ -1,4 +1,4 @@
-- name: install packages
+- name: install pacman packages
   package:
     name: "{{ item }}"
     state: latest
@@ -6,6 +6,7 @@
     - ansible
     - bash-completion
     - curl
+    - exfat-utils
     - flatpak
     - git
     - nano
@@ -14,6 +15,7 @@
     - openssh
     - openvpn
     - rsync
+    - tlp
     - wget
     - vim
     - zsh
