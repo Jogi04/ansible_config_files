@@ -29,3 +29,17 @@
     - torbrower-launcher
     - wireshark
     - vlc
+
+- name: flatpak add flathub repo
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+
+- name: install flatpak packages
+  flatpak:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - com.spotify.Client
+    - org.onlyoffice.desktopeditors
