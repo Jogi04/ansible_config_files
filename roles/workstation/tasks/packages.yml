@@ -3,32 +3,27 @@
     name: "{{ item }}"
     state: latest
   loop:
-    # terminal utils
-    - speedtest-cli
-    - nmap
-    - openvpn
-    # development utils
     - ansible
-    - openscad
-    - virtualbox
-    - pycharm-community-edition
+    - bash-completion
+    - curl
+    - flatpak
+    - git
+    - nano
+    - nfs-utils
+    - nmap
+    - openssh
+    - openvpn
+    - rsync
+    - wget
+    - vim
+    - zsh
+
+    #desktop apps
     - arduino
     - arduino-avr-core
-    - wireshark
-    - kdevelop
-    - scrcpy
-    # desktop utils
-    - konsole
-    - networkmanager-openvpn
     - firefox
-    - chromium
-    - vlc
-    - gwenview
-    - spectacle
-    - filelight
     - keepassxc
-    - kate
-    - partitionmanager
+    - pycharm-community-edition
     - torbrower-launcher
-    - geogebra
-    - pulseaudio-equalizer-gtk
+    - wireshark
+    - vlc
