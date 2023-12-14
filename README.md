@@ -23,6 +23,7 @@ sudo ./ansible_server_setup.sh
 
 ### Requirements
 Add host ip to inventory file and create <host_ip>.yml file in host_vars and set the variables for the host.
+Make sure to include the intended IPs in the inventory file and comment out unwanted IPs.
 
 ### Base Role
 ```bash
