@@ -61,12 +61,12 @@
     from: 10.0.0.0/8
   when: is_nas_server is defined and is_nas_server == true
 
-- name: allow port 1194 if it is a vpn server
+- name: allow port 51820 if it is a wireguard server
   ufw:
     rule: allow
-    port: 1194
+    port: 51820
     proto: any
-  when: is_vpn_server is defined and is_vpn_server == true
+  when: is_wireguard_server is defined and is_wireguard_server == true
 
 - name: allow port 2049 if it is a nas server
   ufw:
