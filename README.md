@@ -3,7 +3,7 @@
 ### Control Host Setup
 Clone the github repository:
 ```bash
-git clone https://github.com/Jogi123/ansible_config_files.git
+git clone https://github.com/Jogi04/ansible_config_files.git
 ```
 Navigate into the root of the repository and run the following command to set up the Ansible Control Host:
 ```bash
